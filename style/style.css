@@ -3,20 +3,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   margin: 0;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h1 {
-  font-size: 60px;
+  font-size: 75px;
 }
 
 .container {
-  width: 1024px;
-  height: 768px;
-  margin: 25vh auto;
+  width: 100%;
+  height: 100vh;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
-  background-position: top center;
+  background-position: center;
+  margin: 0;
+  padding: 16px;
+  position: relative;
 }
 
 .accented {
@@ -39,7 +41,7 @@ span {
 }
 
 img {
-  width: 150px;
+  width: 180px;
 }
 
 span {
@@ -59,68 +61,41 @@ span {
   fill: #00FFFF;
 }
 
-.star-hover path {
-  fill: pink;
-}
-
 .inner {
   padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.inner div {
+  margin: 30px 0;
 }
 .inner input {
-  width: 66%;
+  width: 100%;
   border: none;
   border-bottom: 1px solid #d20094;
   background: none;
   padding: 10px;
   margin: 25px 0;
+  font-size: 20px;
+  color: white;
+}
+.inner input:focus {
+  outline: none;
 }
 .inner button {
   background-color: #00ffff;
-  border: none;
-  font-size: 20px;
+  border: 0;
+  font-size: 24px;
   padding: 14px 28px;
   font-weight: bold;
 }
 .inner button:hover {
   box-shadow: 0 0 10px 3px #00ffff;
   cursor: pointer;
+}
+
+#stars div {
+  margin: 0.5rem;
 }/*# sourceMappingURL=style.css.map */
-
-.pie-chart {
-  --p:20;
-  --b:22px;
-  --c:darkred;
-  --w:150px;
-  
-  width:var(--w);
-  aspect-ratio:1;
-  position:relative;
-  display:inline-grid;
-  margin:5px;
-  place-content:center;
-  font-size:25px;
-  font-weight:bold;
-  font-family:sans-serif;
-}
-.pie-chart:before,
-.pie-chart:after {
-  content:"";
-  position:absolute;
-  border-radius:50%;
-}
-
-.pie-chart:before {
-  inset:0;
-  background:
-    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--c) calc(var(--p)*1%),#0000 0);
-  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-  mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-  background-size:0 0,auto;
-}
-.pie-chart:after {
-  inset:calc(50% - var(--b)/2);
-  background:var(--c);
-  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  content:none;
-}
