@@ -1,6 +1,6 @@
 body {
   text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   margin: 0;
   color: white;
   font-size: 20px;
@@ -8,6 +8,7 @@ body {
 
 h1 {
   font-size: 75px;
+  font-family: "Outfit", Arial, Helvetica, sans-serif;
 }
 
 .container {
