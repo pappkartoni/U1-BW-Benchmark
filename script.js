@@ -17,6 +17,7 @@ function nextQuestion() {
     window.location.href = `http://localhost:5500/BW/question${qNumber}.html`
 }
 
+
 // Set the number of seconds for the timer
 const timerLength = 60;
 
@@ -43,8 +44,6 @@ function startTimer() {
 
 startTimer();//Calling function
 
-
-/* 
 function renderQuestion(n) {
 
 }
@@ -71,6 +70,21 @@ function renderFeedback() {
 }
 
 
+function activateRating() {
+    let stars = document.querySelectorAll(".stars svg");
+    for (let i = 0; i < stars.length; i++) {
+        stars[i].addEventListener("click", function() {
+            for (let j = 0; j < stars.length; j++) {
+                stars[j].classList.remove("star-active");
+            }
+            for (let j = i; j >= 0; j--) {
+                stars[j].classList.toggle("star-active")
+            }
+        })
+    }
+}
+
 window.onload = function() {
     renderWelcome();
-} */
+    activateRating();
+}
