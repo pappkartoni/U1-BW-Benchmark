@@ -59,8 +59,8 @@ span {
   fill: #00FFFF;
 }
 
-svg:not(.star-active):hover path {
-  fill: #00FFFF;
+.star-hover path {
+  fill: pink;
 }
 
 .inner {
