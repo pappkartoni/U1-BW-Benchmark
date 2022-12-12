@@ -17,7 +17,6 @@ function nextQuestion() {
     window.location.href = `http://localhost:5500/BW/question${qNumber}.html`
 }
 
-
 // Set the number of seconds for the timer
 const timerLength = 60;
 
@@ -42,7 +41,8 @@ function startTimer() {
   }, 1000); // 1000 milliseconds = 1 second
 }
 
-startTimer();//calling the function
+startTimer();//Calling function
+
 
 /* 
 function renderQuestion(n) {
