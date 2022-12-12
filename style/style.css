@@ -13,7 +13,7 @@ h1 {
 .container {
   width: 1024px;
   height: 768px;
-  margin: 10vh auto;
+  margin: 25vh auto;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-position: top center;
@@ -34,10 +34,6 @@ h1 {
   display: inline-block;
 }
 
-img {
-  width: 150px;
-}
-
 span {
   font-weight: bold;
 }
@@ -48,4 +44,44 @@ img {
 
 span {
   font-weight: bold;
+}
+
+.logo {
+  text-align: left;
+  margin-left: 96px;
+  margin-top: 32px;
+}
+.logo img {
+  width: 150px;
+}
+
+.star-active path {
+  fill: #00FFFF;
+}
+
+svg:not(.star-active):hover path {
+  fill: #00FFFF;
+}
+
+.inner {
+  padding: 10px;
+}
+.inner input {
+  width: 66%;
+  border: none;
+  border-bottom: 1px solid #d20094;
+  background: none;
+  padding: 10px;
+  margin: 25px 0;
+}
+.inner button {
+  background-color: #00ffff;
+  border: none;
+  font-size: 20px;
+  padding: 14px 28px;
+  font-weight: bold;
+}
+.inner button:hover {
+  box-shadow: 0 0 10px 3px #00ffff;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
