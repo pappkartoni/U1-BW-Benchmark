@@ -1,0 +1,20 @@
+body{
+    background-image: url("bg.jpg") ;
+    color: white;
+}
+
+.content{
+    margin-left: 60px;
+}
+
+img {
+    width: 150px;
+}
+
+span {
+    font-weight: bold;
+}
+
+h1{
+    font-size: 70px;
+}
