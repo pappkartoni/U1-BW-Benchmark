@@ -32,7 +32,7 @@ function renderResult() {
 }
 
 function renderFeedback() {
-
+    window.location.href = "http://localhost:5500/BW/feedback.html";
 }
 
 function checkAnswer() {
