@@ -74,6 +74,7 @@ function activateRating() {
     let stars = document.querySelectorAll(".stars svg");
     for (let i = 0; i < stars.length; i++) {
         stars[i].addEventListener("click", function() {
+            console.log(i+1);
             for (let j = 0; j < stars.length; j++) {
                 stars[j].classList.remove("star-active");
             }
