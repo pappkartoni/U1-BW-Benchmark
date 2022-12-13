@@ -164,7 +164,7 @@ img {
   border-radius: 50%;
 }
 
-.congrat{
+.resultStatement{
   width: 150px;
   height: 10px ;
   font-size: 12px;
@@ -222,3 +222,13 @@ img {
 .bg-clr-btn:active {
   background-color: #900080;
 }/*# sourceMappingURL=style.css.map */
+
+.rate-us-btn {
+  background-color: Transparent;
+  border: white solid;
+  color: white;
+  margin-top: 20px;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+}
