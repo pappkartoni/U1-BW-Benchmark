@@ -157,16 +157,8 @@ function renderResult() {
 
 function renderFeedback() {
     
-    let container = document.querySelector('.container');
-
-  let logoContainer = document.createElement("div");
-  logoContainer.classList.add("logo");
-  let logoImage = document.createElement("img");
-  logoImage.src = "./assets/epicode_logo.png";
-  logoImage.alt = "epicode logo";
-  logoContainer.appendChild(logoImage);
-
   let inner = document.querySelector('.inner');
+  inner.innerHTML = "";
 
   let h1 = document.createElement("h1");
   h1.innerText = "Tell us how it's going";
@@ -176,22 +168,23 @@ function renderFeedback() {
   p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
   inner.appendChild(p);
   
-  let stars = document.createElement("div");
-  stars.id = "stars";
-  renderStars();
-  inner.appendChild(stars);
-         
+
+  //let starsContainer = document.createElement("div");
+  //let stars = document.getElementById('stars');
+
+
+
  let commentBoxContainer = document.createElement("div");
  commentBoxContainer.classList.add("comment-box"); 
 
   let p1 = document.createElement("p");
   p1.innerText = "Leave us an open feedback about your experience so far";
-  commentBoxContainer.appendChild(p1);
+  inner.appendChild(p1);
 
   let commentBox = document.createElement("input");
   commentBox.type = "text";
   commentBox.placeholder = "Write your comment here";
-  commentBoxContainer.appendChild(commentBox);
+  inner.appendChild(commentBox);
 
   let infoButton = document.createElement('button');
   infoButton.classList.add('info-btn');
