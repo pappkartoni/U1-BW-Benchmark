@@ -133,15 +133,12 @@ function checkAnswer() {
 function startBenchmark() {
     let check = document.getElementById("check");
         if (check.checked) {
+            document.querySelector("inner").classList.remove("flt-left");
             renderQuestion();
         } else {
             alert("Please promise us to be honest, honey!")
         }
     }
-
-function renderWelcome() {
-    console.log("hi");
-}
 
 //write a function calculating the correct answer
 let pieChart = document.querySelector(".pie-chart")
@@ -230,10 +227,6 @@ function renderWelcome() {
     ctr2.appendChild(button);
     checkbar.appendChild(ctr2);
     inner.appendChild(checkbar);
-}
-
-function renderFeedback() {
-    window.location.href = "./feedback.html";
 }
 
 function renderStars() {
