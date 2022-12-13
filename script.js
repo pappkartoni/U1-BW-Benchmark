@@ -1,10 +1,19 @@
 const questions = [
     {
-        question: "what is love",
-        correct: "baby",
-        incorrects: ["don't", "hurt", "me"],
-        type: "multiple"
-    }
+        question: "If you type the following code in the console window, what result will you get? 3 > 2 > 1 === false;",
+        correct: "True",
+        incorrects: ["False"],
+        type: "multiple",
+        time: 20
+    },
+    
+    { 
+        question: "JavaScript is a ___ -side programming language.",
+        correct: "Both",
+        incorrects: ["Client", "Sever", "None"],
+        type: "multiple",
+        time: 20
+    },
 ];
 
 let qNumber = 0;
@@ -43,11 +52,53 @@ function startTimer() {
   }, 1000); // 1000 milliseconds = 1 second
 }
 
-function renderQuestion(n) {
+function renderQuestion() {
+
+        // Get the nth question from the `questions` array
+        let question = questions[0];
+        
+        let inner = document.querySelector('.inner');
+
+        inner.innerHTML = "";
+
+        let h1 = document.createElement("h1");
+        
+        h1.innerText = question.question;
+
+        inner.appendChild(h1);  
+
+} 
+
+function renderButtons() {
+    
+    let buttons = questions[0];
+
+    let inner = document.querySelector('.inner');
+
+    inner.innerHTML = '';
+
+    let buttonDiv = document.createElement('div');
+    buttonDiv.classList.add('buttons');
+
+    inner.appendChild(buttonDiv);
+
+    
+
+      
+
 
 }
 
+
+
+
+
+
+
 function checkAnswer() {
+    if (document.getElementById('')) {
+        
+    }
 
 }
 
@@ -129,3 +180,6 @@ window.onload = function() {
     renderWelcome();
     renderStars();
 }
+
+
+

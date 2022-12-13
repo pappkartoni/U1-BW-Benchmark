@@ -6,15 +6,21 @@
   </head>
   <body>
     <div class="container">
-      <p id="timer"></p>
-  
-  
-      <h2>If you type the following code in the console window, what result will you get?
-          3 > 2 > 1 === false;</h2>
-  
-      <button type="button" onclick="checkAnswer('true')">true</button>
-      <button type="button" onclick="checkAnswer('false')">false</button>
-      <button type="button" onclick="nextQuestion()">Submit</button>
+      <div class="inner">
+        
+        <h1 id="question"></h1>
+
+        <div class="po">    <!----append this div to the class inner--->
+          
+          
+          <button id="answer1-1"></button> <!-----append to the class po------> 
+          <button id="answer1-2"></button>
+
+          </div> 
+
+          <button id="Submit">Submit</button>
+      
+        </div>
       <script src="script.js"></script>
     </div>
   </body>
