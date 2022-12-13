@@ -19,7 +19,7 @@ const questions = [
 let qNumber = 0;
 let points = 0;
 let rating = 0;
-
+let selectedAnswer = null;
 
 function nextQuestion() {
     checkAnswer();
@@ -53,21 +53,49 @@ function startTimer() {
 }
 
 function renderQuestion() {
-
-        // Get the nth question from the `questions` array
-        let question = questions[0];
-        
+        let question = questions[qNumber];        
         let inner = document.querySelector('.inner');
-
         inner.innerHTML = "";
+        selectedAnswer = null;
 
         let h1 = document.createElement("h1");
+        h1.innerText = question.question + points;
+        inner.appendChild(h1);
         
-        h1.innerText = question.question;
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("btn-container");
+        inner.appendChild(buttonContainer);
 
-        inner.appendChild(h1);  
+        let answers = shuffleArray([question.correct].concat(question.incorrects));
+
+        for (let i = 0; i < answers.length; i++) {
+            let answer = answers[i];
+            let btn = document.createElement("button");
+
+            btn.classList.add("answer-btn", "unselected");
+            btn.setAttribute("id", i);
+            btn.innerText = answer;
+            btn.addEventListener("click", selectAnswer);
+            buttonContainer.appendChild(btn);
+        }
+        qNumber++;
 
 } 
+
+function checkAnswer() {
+    let answer = selectedAnswer; // we have to actually get the selected answer
+    let correctOne = questions[qNumber].correct;
+    if (answer === correctOne) {
+        points++
+    }
+    renderQuestion()
+}
+
+function selectAnswer(event) { // TODO
+    selectedAnswer = event.target.innerText;
+    event.target.classList.toggle("selected");
+    event.target.classList.toggle("unselected");
+}
 
 function renderButtons() {
     
@@ -105,7 +133,8 @@ function checkAnswer() {
 function startBenchmark() {
     let check = document.getElementById("check");
         if (check.checked) {
-            renderQuestion(0);
+            window.location.href = "./questions.html"
+            window.onload = renderQuestion();
         } else {
             alert("Please promise us to be honest, honey!")
         }
@@ -174,6 +203,17 @@ function hoverStar(event) {
 
 function leaveStar(event) {
     renderRating(rating);
+}
+
+function shuffleArray(arr) { // i reused this from yesterday
+    for (let i=0;i<arr.length-1; i++) {
+        let j = Math.floor(Math.random() * (arr.length - i)) + i;
+        let swp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = swp;
+    }
+
+    return arr;
 }
 
 window.onload = function() {
