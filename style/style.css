@@ -117,6 +117,62 @@ img {
   display: inline;
 }
 
+.middle-box {
+  position: relative;
+}
+
+.pie-chart {
+  --p:20;
+  --b:40px;
+  --c:#c2128d;
+  --w:300px;
+  
+  width:var(--w);
+  aspect-ratio:1;
+  position:relative;
+  display:inline-grid;
+  margin:5px;
+  place-content:center;
+  font-size:25px;
+  font-weight:bold;
+  font-family:sans-serif;
+}
+.pie-chart:before,
+.pie-chart:after {
+  content:"";
+  position:absolute;
+  border-radius:50%;
+}
+
+.pie-chart:before {
+  inset:0;
+  background:
+    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
+    conic-gradient(var(--c) calc(var(--p)*1%),rgb(0, 255, 255) 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
+  background-size:0 0,auto;
+}
+.pie-chart:after {
+  inset:calc(50% - var(--b)/2);
+  background:var(--c);
+  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
+  content:none;
+}
+.pie-chart:hover {
+  box-shadow: 0px 0px 20px rgba(0,0,0,6);
+  border-radius: 50%;
+}
+
+.congrat{
+  width: 150px;
+  height: 10px ;
+  font-size: 12px;
+  z-index: 0;
+  position: absolute;
+  top: 25%;
+  left: 43%;
+}
 .checkbar {
   display: flex;
   flex-wrap: wrap;

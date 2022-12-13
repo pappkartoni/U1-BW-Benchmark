@@ -144,9 +144,37 @@ function renderWelcome() {
 
 }
 
+//write a function calculating the correct answer
+let pieChart = document.querySelector(".pie-chart")
+pieChart.style = "--p:60;"
+function changingThePercantageofPieChart(string) {
+    pieChart.style = string
+}
+
 
 function renderResult() {
-
+    container.innerHTML = "";
+    //creating empty container to store the value
+    let finalResult = document.createElement("div")
+    let passOrFailStatement = document.createElement("h2")
+    
+    finalResult.appendChild(passOrFailStatement);
+    
+    let finalCorrectScore = document.createElement("div")
+    finalCorrectScore.innertext = ("correct mark")
+    //need the value of the previous mark
+    finalResult.appendChild(finalCorrectScore)
+    
+    let finalWrongScore = document.createElement("div")
+    finalCorrectScore.innertext = ("full mark - correct mark")
+    //need the value of the previous mark
+    finalResult.appendChild(finalWrongScore)
+    
+    if (mark > 60) {
+        return passOrFailStatement.innerText = ("Congratulations! You passed the exam. We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)")
+    } else {
+        return passOrFailStatement.innerText = ("Oh no! Unfortunately you didnt pass this one")
+    }
 }
 
 function renderFeedback() {
