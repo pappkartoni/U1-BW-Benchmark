@@ -98,30 +98,8 @@ function selectAnswer(event) { // TODO
 }
 
 function renderButtons() {
-    
-    let buttons = questions[0];
-
-    let inner = document.querySelector('.inner');
-
-    inner.innerHTML = '';
-
-    let buttonDiv = document.createElement('div');
-    buttonDiv.classList.add('buttons');
-
-    inner.appendChild(buttonDiv);
-
-    
-
-      
-
 
 }
-
-
-
-
-
-
 
 function checkAnswer() {
     if (document.getElementById('')) {
@@ -178,7 +156,58 @@ function renderResult() {
 }
 
 function renderFeedback() {
-    window.location.href = "./feedback.html";
+
+  // Create the container element
+  let container = document.createElement("div");
+  container.classList.add("container");
+
+  // Create the logo div and image
+  let logoContainer = document.createElement("div");
+  logoContainer.classList.add("logo");
+  let logoImage = document.createElement("img");
+  logoImage.src = "./assets/epicode_logo.png";
+  logoImage.alt = "epicode logo";
+  logoContainer.appendChild(logoImage);
+
+  // Create the inner div and its contents
+  let innerContainer = document.createElement("div");
+  innerContainer.classList.add("inner");
+
+  let h1 = document.createElement("h1");
+  h1.innerText = "Tell us how it's going";
+  innerContainer.appendChild(h1);
+
+  let p = document.createElement("p");
+  p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
+  innerContainer.appendChild(p);
+
+  /*commented the next lines out because i wasn't sure about the stars? 
+  I remember you mentioning somthing about not inclduing it*\
+
+  /*let stars = document.createElement("div");
+  stars.id = "stars";
+  innerContainer.appendChild(stars);
+  */        
+ 
+ // Create the comment-box div and its contents
+ let commentBoxContainer = document.createElement("div");
+ commentBoxContainer.classList.add("comment-box"); 
+
+  let p1 = document.createElement("p");
+  p1.innerText = "Leave us an open feedback about your experience so far";
+  commentBoxContainer.appendChild(p1);
+
+  let commentBox = document.createElement("input");
+  commentBox.type = "text";
+  commentBox.placeholder = "Write your comment here";
+  commentBoxContainer.appendChild(commentBox);
+
+  let infoButton = document.createElement('button');
+  infoButton.classList.add('info-bnt');
+  infoButton.innerText ='MORE INFO';
+  infoButton.appendChild(innerContainer)
+
+    
 }
 
 function renderStars() {
