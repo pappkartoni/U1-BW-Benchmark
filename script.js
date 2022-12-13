@@ -156,12 +156,9 @@ function renderResult() {
 }
 
 function renderFeedback() {
+    
+    let container = document.querySelector('.container');
 
-  // Create the container element
-  let container = document.createElement("div");
-  container.classList.add("container");
-
-  // Create the logo div and image
   let logoContainer = document.createElement("div");
   logoContainer.classList.add("logo");
   let logoImage = document.createElement("img");
@@ -169,27 +166,21 @@ function renderFeedback() {
   logoImage.alt = "epicode logo";
   logoContainer.appendChild(logoImage);
 
-  // Create the inner div and its contents
-  let innerContainer = document.createElement("div");
-  innerContainer.classList.add("inner");
+  let inner = document.querySelector('.inner');
 
   let h1 = document.createElement("h1");
   h1.innerText = "Tell us how it's going";
-  innerContainer.appendChild(h1);
+  inner.appendChild(h1);
 
   let p = document.createElement("p");
   p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
-  innerContainer.appendChild(p);
-
-  /*commented the next lines out because i wasn't sure about the stars? 
-  I remember you mentioning somthing about not inclduing it*\
-
-  /*let stars = document.createElement("div");
+  inner.appendChild(p);
+  
+  let stars = document.createElement("div");
   stars.id = "stars";
-  innerContainer.appendChild(stars);
-  */        
- 
- // Create the comment-box div and its contents
+  renderStars();
+  inner.appendChild(stars);
+         
  let commentBoxContainer = document.createElement("div");
  commentBoxContainer.classList.add("comment-box"); 
 
@@ -203,11 +194,10 @@ function renderFeedback() {
   commentBoxContainer.appendChild(commentBox);
 
   let infoButton = document.createElement('button');
-  infoButton.classList.add('info-bnt');
+  infoButton.classList.add('info-btn');
   infoButton.innerText ='MORE INFO';
-  infoButton.appendChild(innerContainer)
+  inner.appendChild(infoButton);
 
-    
 }
 
 function renderStars() {
