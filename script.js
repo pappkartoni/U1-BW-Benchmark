@@ -133,24 +133,24 @@ function checkAnswer() {
 function startBenchmark() {
     let check = document.getElementById("check");
         if (check.checked) {
-            window.location.href = "./questions.html"
-            window.onload = renderQuestion();
+            renderQuestion();
         } else {
             alert("Please promise us to be honest, honey!")
         }
     }
 
 function renderWelcome() {
-
+    console.log("hi");
 }
 
 //write a function calculating the correct answer
 let pieChart = document.querySelector(".pie-chart")
-pieChart.style = "--p:60;"
+if (pieChart !== null) {
+    pieChart.style = "--p:60;"
+}
 function changingThePercantageofPieChart(string) {
     pieChart.style = string
 }
-
 
 function renderResult() {
     container.innerHTML = "";
@@ -175,6 +175,61 @@ function renderResult() {
     } else {
         return passOrFailStatement.innerText = ("Oh no! Unfortunately you didnt pass this one")
     }
+}
+
+function renderWelcome() {
+    let inner = document.querySelector(".inner");
+    inner.innerHTML = "";
+    inner.classList.add("flt-left");
+    let h1 = document.createElement("h1");
+    h1.innerHTML = "Welcome to <span>your exam</span>";
+    inner.appendChild(h1);
+    let instructions = document.createElement("div");
+    let h2 = document.createElement("h2");
+    h2.innerText = "Instructions";
+    instructions.appendChild(h2);
+    let p = document.createElement("p");
+    p.classList.add("inl");
+    p.innerText = "We don't expect most engineers to know the answers to all of these questions, so don't worry if you're unsure of a few of them."
+    instructions.appendChild(p);
+    inner.appendChild(instructions);
+    let bullets = document.createElement("div");
+    bullets.classList.add("bullet-points");
+    let ul = document.createElement("ul");
+    
+    let li1 = document.createElement("li");
+    li1.innerHTML ="Each question is <span>timed</span> and can only be <span>answered once</span>."
+    ul.appendChild(li1);
+    let li2 = document.createElement("li");
+    li2.innerHTML = "Changing browser tab or opening other windows will invalidate the question.";
+    ul.appendChild(li2);
+    let li3 = document.createElement("li");
+    li3.innerHTML = "This exam will take approx. <span>0-5 minutes.</span>";
+    ul.appendChild(li3);
+    bullets.appendChild(ul);
+    inner.appendChild(bullets)
+
+    let checkbar = document.createElement("div");
+    checkbar.classList.add("checkbar");
+    let ctr1 = document.createElement("div");
+    ctr1.classList.add("il-ctr");
+    let checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.setAttribute("id", "check");
+    ctr1.appendChild(checkbox);
+    let label = document.createElement("label");
+    label.innerText = "I promise to answer myself without help from anyone";
+    ctr1.appendChild(label);
+    checkbar.appendChild(ctr1);
+    let ctr2 = document.createElement("div");
+    ctr2.classList.add("il-ctr");
+    let button = document.createElement("button");
+    button.classList.add("info-btn");
+    button.onclick = startBenchmark;
+    button.innerText = "PROCEED";
+    ctr2.appendChild(button);
+    checkbar.appendChild(ctr2);
+    inner.appendChild(checkbar);
 }
 
 function renderFeedback() {
@@ -246,7 +301,6 @@ function shuffleArray(arr) { // i reused this from yesterday
 
 window.onload = function() {
     renderWelcome();
-    renderStars();
 }
 
 
