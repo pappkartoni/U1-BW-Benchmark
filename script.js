@@ -59,6 +59,13 @@ function renderWelcome() {
 
 }
 
+//write a function calculating the correct answer
+let pieChart = document.querySelector(".pie-chart")
+pieChart.style = "--p:60;"
+function changingThePercantageofPieChart(string) {
+    pieChart.style = string
+}
+
 
 function renderResult() {
     container.innerHTML = "";

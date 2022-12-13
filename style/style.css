@@ -86,10 +86,14 @@ span {
   cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
 
+.middle-box {
+  position: relative;
+}
+
 .pie-chart {
   --p:20;
   --b:40px;
-  --c:darkred;
+  --c:#c2128d;
   --w:300px;
   
   width:var(--w);
@@ -127,4 +131,14 @@ span {
 .pie-chart:hover {
   box-shadow: 0px 0px 20px rgba(0,0,0,6);
   border-radius: 50%;
+}
+
+.congrat{
+  width: 150px;
+  height: 10px ;
+  font-size: 12px;
+  z-index: 0;
+  position: absolute;
+  top: 25%;
+  left: 43%;
 }
