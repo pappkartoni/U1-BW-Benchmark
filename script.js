@@ -52,8 +52,13 @@ function checkAnswer() {
 }
 
 function startBenchmark() {
-
-}
+    let check = document.getElementById("check");
+        if (check.checked) {
+            renderQuestion(0);
+        } else {
+            alert("Please promise us to be honest, honey!")
+        }
+    }
 
 function renderWelcome() {
 

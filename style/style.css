@@ -82,7 +82,7 @@ span {
 .inner div {
   margin: 30px 0;
 }
-.inner input {
+.inner input[type=text] {
   width: 90%;
   border: none;
   border-bottom: 1px solid #d20094;
@@ -92,7 +92,7 @@ span {
   font-size: 20px;
   color: white;
 }
-.inner input:focus {
+.inner input[type=text]:focus {
   outline: none;
 }
 .inner button {
@@ -103,7 +103,7 @@ span {
   font-weight: bold;
 }
 .inner button:hover {
-  box-shadow: 0 0 16px 1px #00ffff;
+  box-shadow: 0 0 16px 1px #00FFFF;
   cursor: pointer;
 }
 .inner ul {
@@ -124,4 +124,31 @@ span {
 
 .inl {
   display: inline;
+}
+
+.checkbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.checkbar div {
+  line-height: 2.5rem;
+}
+.checkbar label {
+  font-size: 16px;
+}
+.checkbar input[type=checkbox] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  vertical-align: bottom;
+  position: relative;
+  top: -9px;
+  border: 2px solid white;
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+}
+.checkbar input[type=checkbox]:checked {
+  background: #00FFFF;
 }/*# sourceMappingURL=style.css.map */
