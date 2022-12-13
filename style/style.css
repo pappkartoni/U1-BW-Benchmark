@@ -154,15 +154,12 @@ img {
 .answer-btn:hover {
   background-color: #d20094;
 }
-
 .unselected {
   background-color: rgba(11, 17, 59, 0.5019607843);
 }
-
 .selected {
   background-color: #d20094;
 }
-
 .bg-clr-btn {
   background-color: #d20094;
 }
