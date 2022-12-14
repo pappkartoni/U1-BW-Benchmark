@@ -21,6 +21,7 @@ let points = 0;
 let rating = 0;
 let selectedAnswer = null;
 let timeout = false;
+let timerInterval = null;
 
 function startTimer() {
     // Set the number of seconds for the timer
@@ -90,6 +91,7 @@ function renderQuestion() {
 } 
 
 function checkAnswer() {
+    clearInterval(timerInterval);
     let selected = document.querySelector(".selected");
     if (selected !== null || timeout) {
         let answer = selected ? selected.innerText : null;
@@ -97,7 +99,7 @@ function checkAnswer() {
         if (answer === correctOne) {
             points++
         }
-        if (qNumber >= questions.length) {
+        if (qNumber >= questions.length - 1) {
             renderResult();
         } else {
             qNumber++;
@@ -346,7 +348,6 @@ function renderTimer() {
     let timeLimit = questions[qNumber].time;
     let timePassed = 0;
     let timeLeft = timeLimit;
-    let timerInterval = null;
 
     let timerdiv = document.querySelector(".base-timer");
     timerdiv.innerHTML = `  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -420,8 +421,8 @@ function shuffleArray(arr) { // i reused this from yesterday
 }
 
 window.onload = function() {
-    renderQuestion();
-    document.querySelector(".inner").classList.remove("flt-left");
+    renderWelcome();
+    // document.querySelector(".inner").classList.remove("flt-left");
 }
 
 
