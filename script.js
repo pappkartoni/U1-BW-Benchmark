@@ -409,7 +409,10 @@ function renderFeedback() {
     let infoButton = document.createElement('button');
     infoButton.classList.add('info-btn');
     infoButton.innerText ='MORE INFO';
-  inner.appendChild(infoButton);
+    infoButton.onclick = function() {
+        window.location.href='https://epicode.com';
+    }
+    inner.appendChild(infoButton);
 }
 
 function renderStars() {
