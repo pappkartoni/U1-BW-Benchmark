@@ -21,28 +21,7 @@ let points = 0;
 let rating = 0;
 let selectedAnswer = null;
 let timeout = false;
-
-function startTimer() {
-    // Set the number of seconds for the timer
-    const timerLength = 60;
-
-    // Set the starting time for the timer
-    let timeLeft = timerLength;
-    // Use setInterval to count down the seconds
-    const timerInterval = setInterval(function() {
-    // Decrement the time left by 1 second
-    timeLeft--;
-
-    // Update the time displayed on the page
-    document.getElementById("timer").innerHTML = timeLeft + " seconds remaining";
-
-    // If the timer reaches 0, stop the interval and show a "Time's up" message
-    if (timeLeft === 0) {
-      clearInterval(timerInterval);
-      document.getElementById("timer").innerHTML = "Time's up!";
-    }
-  }, 1000); // 1000 milliseconds = 1 second
-}
+let timerInterval = null;
 
 function renderQuestion() {
         let question = questions[qNumber];        
@@ -87,6 +66,7 @@ function renderQuestion() {
 
 function checkAnswer() {
     let selected = document.querySelector(".selected");
+    clearInterval(timerInterval);
     if (selected !== null || timeout) {
         let answer = selected ? selected.innerText : null;
         let correctOne = questions[qNumber].correct;
@@ -97,6 +77,7 @@ function checkAnswer() {
             renderResult();
         } else {
             qNumber++;
+
             renderQuestion();
         }
     }
@@ -365,7 +346,6 @@ function renderTimer() {
     let timeLimit = questions[qNumber].time;
     let timePassed = 0;
     let timeLeft = timeLimit;
-    let timerInterval = null;
 
     let timerdiv = document.createElement("div");
     timerdiv.classList.add("base-timer");
