@@ -30,6 +30,10 @@ function renderQuestion() {
         selectedAnswer = null;
         timeout = false;
 
+        let timer = document.createElement("div");
+        timer.classList.add("base-timer");
+        inner.appendChild(timer);
+        
         let h3 = document.createElement("h3");
         h3.innerText = question.question + points;
         inner.appendChild(h3);
@@ -65,6 +69,7 @@ function renderQuestion() {
 } 
 
 function checkAnswer() {
+    clearInterval(timerInterval);
     let selected = document.querySelector(".selected");
     clearInterval(timerInterval);
     if (selected !== null || timeout) {
@@ -385,9 +390,7 @@ function renderTimer() {
     let timePassed = 0;
     let timeLeft = timeLimit;
 
-    let timerdiv = document.createElement("div");
-    timerdiv.classList.add("base-timer");
-    inner.appendChild(timerdiv);
+    let timerdiv = document.querySelector(".base-timer");
     timerdiv.innerHTML = `  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <g class="base-timer__circle">
                                     <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
@@ -460,6 +463,7 @@ function shuffleArray(arr) { // i reused this from yesterday
 
 window.onload = function() {
     renderWelcome();
+    // document.querySelector(".inner").classList.remove("flt-left");
 }
 
 //remember to change back to renderWelcome

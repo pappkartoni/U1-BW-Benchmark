@@ -373,8 +373,9 @@ img {
 
 .base-timer {
   position: relative;
-  height: 300px;
-  width: 300px;
+  height: 150px;
+  width: 150px;
+  left: 90%;
 }
 
 /* Removes SVG styling that would hide the time label */
@@ -392,8 +393,8 @@ img {
 .base-timer__label {
   position: absolute;
   /* Size should match the parent container */
-  width: 300px;
-  height: 300px;
+  width: 150px;
+  height: 150px;
   /* Keep the label aligned to the top */
   top: 0;
   /* Create a flexible box that centers content vertically and horizontally */
@@ -401,7 +402,7 @@ img {
   align-items: center;
   justify-content: center;
   /* Sort of an arbitrary number; adjust to your liking */
-  font-size: 48px;
+  font-size: 16px;
 }
 
 .base-timer__path-remaining {
