@@ -22,17 +22,23 @@ let rating = 0;
 let selectedAnswer = null;
 let timeout = false;
 let timerInterval = null;
+let timeLimit = 0;
+let timePassed = 0;
+let timeLeft = 0;
 
 function renderQuestion() {
         let question = questions[qNumber];        
         let inner = document.querySelector('.inner');
-        inner.innerHTML = "";
         selectedAnswer = null;
         timeout = false;
+        timeLimit = question.time;
+        timePassed = 0;
+        timeLeft = timeLimit;
+        renderTimer();
 
-        let timer = document.createElement("div");
+/*         let timer = document.createElement("div");
         timer.classList.add("base-timer");
-        inner.appendChild(timer);
+        inner.appendChild(timer); */
         
         let h3 = document.createElement("h3");
         h3.innerText = question.question + points;
@@ -65,7 +71,9 @@ function renderQuestion() {
         footer.classList.add("qtn-footer");
         footer.innerHTML = `QUESTION ${qNumber+1}<span> / ${questions.length}</span>`
         inner.appendChild(footer);
-        renderTimer();
+
+        startTimer();
+
 } 
 
 function checkAnswer() {
@@ -372,7 +380,7 @@ function leaveStar(event) {
     renderRating(rating);
 }
 
-const COLOR_CODES = {
+const COLOR_CODES = { // clean this up to match our task
     info: {
         color: "blue"
     },
@@ -386,55 +394,78 @@ let remainingPathColor = COLOR_CODES.info.color;
 
 function renderTimer() {
     let inner = document.querySelector(".inner");
-    let timeLimit = questions[qNumber].time;
-    let timePassed = 0;
-    let timeLeft = timeLimit;
+    inner.innerHTML =        `<div class="base-timer">
+    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g class="base-timer__circle">
+        <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+        <path
+          id="base-timer-path-remaining"
+          stroke-dasharray="283"
+          class="base-timer__path-remaining ${remainingPathColor}"
+          d="
+            M 50, 50
+            m -45, 0
+            a 45,45 0 1,0 90,0
+            a 45,45 0 1,0 -90,0
+          "
+        ></path>
+      </g>
+    </svg>
+    <span id="base-timer-label" class="base-timer__label">${timeLeft}</span>
+  </div>
+  `;
+}
 
-    let timerdiv = document.querySelector(".base-timer");
-    timerdiv.innerHTML = `  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                                <g class="base-timer__circle">
-                                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
-                                    <path
-                                    id="base-timer-path-remaining"
-                                    class="base-timer__path-remaining ${remainingPathColor}"
-                                    d="
-                                      M 50, 50
-                                      m -45, 0
-                                      a 45,45 0 1,0 90,0
-                                      a 45,45 0 1,0 -90,0
-                                    "
-                                  ></path>
-                                </g>
-                            </svg>
-                            <span id="base-timer-label" class="base-timer__label">
-                            ${timeLeft}
-                            </span>`;
+/* function startTimer() {
     timerInterval = setInterval(() => {
         timePassed = timePassed += 1;
         timeLeft = timeLimit - timePassed;
-        setCircleDasharray(timeLeft, timeLimit);
         document.getElementById("base-timer-label").innerText = timeLeft;
-        setRingColor(timeLeft);
+        setCircleDasharray();
+        setRingColor(); // this is fine
 
         if (timeLeft === 0) {
-            clearInterval(timerInterval);
-            timeout = true;
-            let buttons = document.getElementsByClassName("answer-btn");
-            for (let b of buttons) {
-                b.disabled = true; // no hover as well?
-            }
+            onTimesUp();
         }
     }, 1000);
-}
+} */
 
-function calculateTimeFraction(timeLeft, timeLimit) {
-    const rawTimeFraction = (timeLeft) / (timeLimit);
+function onTimesUp() {
+    clearInterval(timerInterval);
+    timeout = true;
+    let buttons = document.getElementsByClassName("answer-btn");
+    for (let b of buttons) {
+        b.disabled = true; // no hover as well?
+    }
+  }
+
+  function startTimer() {
+    timerInterval = setInterval(() => {
+      timePassed = timePassed += 1;
+      timeLeft = timeLimit - timePassed;
+      document.getElementById("base-timer-label").innerHTML = timeLeft;
+      setCircleDasharray();
+      setRingColor(timeLeft);
+
+      if (timeLeft === 0) {
+        onTimesUp();
+      }
+    }, 1000);
+  }
+
+function calculateTimeFraction() {
+    const rawTimeFraction = timeLeft / timeLimit;
+    console.log(rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction));
     return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
-}
+  }
 
-function setCircleDasharray(timeLeft, timeLimit) {
-    const circleDasharray = `${(calculateTimeFraction(timeLeft, timeLimit) * 283).toFixed(0)} 283`;
-    document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", circleDasharray);
+function setCircleDasharray() {
+    const circleDasharray = `${(
+      calculateTimeFraction() * 283
+    ).toFixed(0)} 283`;
+    document
+      .getElementById("base-timer-path-remaining")
+      .setAttribute("stroke-dasharray", circleDasharray);
   }
 
 function setRingColor(timeLeft) {
@@ -463,10 +494,7 @@ function shuffleArray(arr) { // i reused this from yesterday
 
 window.onload = function() {
     renderWelcome();
-    // document.querySelector(".inner").classList.remove("flt-left");
 }
-
-//remember to change back to renderWelcome
 
 
 
