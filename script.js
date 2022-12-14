@@ -43,6 +43,64 @@ function startTimer() {
   }, 1000); // 1000 milliseconds = 1 second
 }
 
+function renderQuestion() {
+        let question = questions[qNumber];        
+        let inner = document.querySelector('.inner');
+        inner.innerHTML = "";
+        selectedAnswer = null;
+
+        let h1 = document.createElement("h1");
+        h1.innerText = question.question + points;
+        inner.appendChild(h1);
+        
+        let buttonContainer = document.createElement("div");
+        buttonContainer.classList.add("btn-container");
+        inner.appendChild(buttonContainer);
+
+        let answers = shuffleArray([question.correct].concat(question.incorrects));
+
+        for (let i = 0; i < answers.length; i++) {
+            let answer = answers[i];
+            let btn = document.createElement("button");
+
+            btn.classList.add("answer-btn", "unselected");
+            btn.setAttribute("id", i);
+            btn.innerText = answer;
+            btn.addEventListener("click", selectAnswer);
+            buttonContainer.appendChild(btn);
+        }
+        qNumber++;
+} 
+
+function checkAnswer() {
+    let answer = selectedAnswer;
+    let correctOne = questions[qNumber].correct;
+    if (answer === correctOne) {
+        points++
+    }
+    if (qNumber >= questions.length) {
+        renderResult();
+    } else {
+        renderQuestion()
+    }
+}
+
+function selectAnswer(event) { // TODO
+    selectedAnswer = event.target.innerText;
+    event.target.classList.toggle("selected");
+    event.target.classList.toggle("unselected");
+}
+
+function startBenchmark() {
+    let check = document.getElementById("check");
+        if (check.checked) {
+            document.querySelector("inner").classList.remove("flt-left");
+            renderQuestion();
+        } else {
+            alert("Please promise us to be honest, honey!")
+        }
+    }
+
 //RESULT PAGE
 function renderResult(){
     let inner = document.querySelector('.inner');
@@ -161,42 +219,6 @@ function renderResult(){
     }
 
 
-}
-
-function renderFeedback() {
-    let inner = document.querySelector('.inner');
-    inner.innerHTML = "";
-
-    let h1 = document.createElement("h1");
-    h1.innerText = "Tell us how it's going";
-    inner.appendChild(h1);
-
-    let p = document.createElement("p");
-    p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
-    inner.appendChild(p);
-    
-    let stars = document.createElement("div");
-    stars.setAttribute("id", "stars");
-    inner.appendChild(stars);
-    renderStars();
-
-
-    let commentBoxContainer = document.createElement("div");
-    commentBoxContainer.classList.add("comment-box"); 
-
-    let p1 = document.createElement("p");
-    p1.innerText = "Leave us an open feedback about your experience so far";
-    inner.appendChild(p1);
-
-    let commentBox = document.createElement("input");
-    commentBox.type = "text";
-    commentBox.placeholder = "Write your comment here";
-    inner.appendChild(commentBox);
-
-    let infoButton = document.createElement('button');
-    infoButton.classList.add('info-btn');
-    infoButton.innerText ='MORE INFO';
-    inner.appendChild(infoButton);
 }
 
 function renderWelcome() {
