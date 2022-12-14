@@ -121,52 +121,76 @@ function startBenchmark() {
         }
     }
 
-function renderResult() {
-    let percentageRight = 100 * (points/questions.length)
-    let percentageWrong = 100 - percentageRight
+//RESULT PAGE
+function renderResult(){
+    let inner = document.querySelector('.inner');
+    inner.innerHTML = "";
+
+// creating header 
+    let headerdiv = document.createElement("div");
+    headerdiv.classList.add("header");
+    inner.appendChild(headerdiv)
+
+    let resultText = document.createElement("h2")
+    resultText.innerText = "Results"
+    resultText.classList.add("result")
+    headerdiv.appendChild(resultText)
     
-    //pie chart / donut chart
-    let pieChart = document.querySelector("#pie-chart")
-    pieChart.classList.add("pie-chart")
-    pieChart.style = `--p:${percentageWrong};`
+    let summary = document.createElement("h3")
+    summary.innerText = "The summary of your answers:"
+    headerdiv.appendChild(summary)
+
+// creating middle box
+    let middlebox = document.createElement("div")
+    middlebox.classList.add ("middle-box")
+    inner.appendChild(middlebox)
+
+// creating result body
+    let resultBody = document.createElement("div")
+    resultBody.classList.add("resultbody")
+    middlebox.appendChild(resultBody)
+
+// creating div il-ctr, percantages and chart
+    let percentageRight = (100 * (points/questions.length)).toFixed(1)
+    let percentageWrong = (100 - percentageRight).toFixed(1)
+
+// correct div
+    let ilCtr = document.createElement("div")
+    ilCtr.classList.add("il-ctr")
+    resultBody.appendChild(ilCtr)
     
-    //write a function calculating the correct answer
-    pieChart = document.querySelector(".pie-chart")
-    if (pieChart !== null) {
-        pieChart.style = "--p:60;"
-    }
-    function changingThePercantageofPieChart(string) {
-        pieChart.style = string
-    }
-    // correct div
+    let correctP = document.createElement("div")
+    correctP.setAttribute("id","correctPercentage")
+    ilCtr.appendChild(correctP)
+
     let correctPercentageNode = document.querySelector("#correctPercentage")
-    correctPercentageNode.classList.add("correctPercentageNode")
     correctPercentageNode.innerText = "Correct"
- 
+
     let correctPercentage = document.createElement("div")
     correctPercentage.innerText = `${percentageRight} %`
     correctPercentageNode.appendChild(correctPercentage)
- 
+
     let questionsCorrect = document.createElement("div")
     questionsCorrect.classList.add("questionsCorrect")
     questionsCorrect.innerText = `${points}/${questions.length} questions`
     correctPercentageNode.appendChild(questionsCorrect)
- 
-    // wrong div
-    let wrongPercentageNode = document.querySelector("#wrongPercentage")
-    wrongPercentageNode.classList.add("wrongPercentageNode")
-    wrongPercentageNode.innerText = "Wrong"
- 
-    let wrongPercentage = document.createElement("div")
-    wrongPercentage.innerText = `${percentageWrong} %`
-    wrongPercentageNode.appendChild(wrongPercentage)
-   
-    let questionsWrong = document.createElement("div")
-    questionsWrong.classList.add("questionsWrong")
-    questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
-    wrongPercentageNode.appendChild(questionsWrong)
-   
-    //result statement display pass or fail
+    
+//pie chart / donut chart
+
+    let pieChartDiv = document.createElement("div")
+    pieChartDiv.setAttribute("id","pie-chart")
+    resultBody.appendChild(pieChartDiv)
+
+    let pieChart = document.querySelector("#pie-chart")
+    pieChart.classList.add("pie-chart")
+    pieChart.style = `--p:${percentageWrong};`
+
+//result statement display pass or fail
+
+    let statement = document.createElement("div")
+    statement.classList.add("resultStatement")
+    resultBody.appendChild(statement)
+
     let resultStatementNode = document.querySelector(".resultStatement")
     let resultStatement = document.createElement("p")
     resultStatement.innerText = ""
@@ -178,44 +202,43 @@ function renderResult() {
     } else {
         resultStatement.innerText = "Oh no! Unfortunately you didn't pass this one."
     }
-//  having problem to construct the if statement into the div
 
-}
+// wrong div
 
-function renderFeedback() {
-    let inner = document.querySelector('.inner');
-    inner.innerHTML = "";
+    let ilCtr2 = document.createElement("div")
+    ilCtr2.classList.add("il-ctr")
+    resultBody.appendChild(ilCtr2)
 
-    let h1 = document.createElement("h1");
-    h1.innerText = "Tell us how it's going";
-    inner.appendChild(h1);
+    let wrongP = document.createElement("div")
+    wrongP.setAttribute("id","wrongPercentage")
+    ilCtr2.appendChild(wrongP)
 
-    let p = document.createElement("p");
-    p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
-    inner.appendChild(p);
-    
-    let stars = document.createElement("div");
-    stars.setAttribute("id", "stars");
-    inner.appendChild(stars);
-    renderStars();
+    let wrongPercentageNode = document.querySelector("#wrongPercentage")
+    wrongPercentageNode.innerText = "Wrong"
+ 
+    let wrongPercentage = document.createElement("div")
+    wrongPercentage.innerText = `${percentageWrong} %`
+    wrongPercentageNode.appendChild(wrongPercentage)
+   
+    let questionsWrong = document.createElement("div")
+    questionsWrong.classList.add("questionsWrong")
+    questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
+    wrongPercentageNode.appendChild(questionsWrong)
+   
+
+// creating rate-us button
+    let btnDiv = document.createElement("div")
+    inner.appendChild(btnDiv)
+
+    let rateUsBtn = document.createElement("button")
+    rateUsBtn.classList.add("rate-us-btn");
+    rateUsBtn.innerText = ("RATE US")
+    btnDiv.appendChild(rateUsBtn)
+    rateUsBtn.onclick = function() {
+        renderFeedback()
+    }
 
 
-    let commentBoxContainer = document.createElement("div");
-    commentBoxContainer.classList.add("comment-box"); 
-
-    let p1 = document.createElement("p");
-    p1.innerText = "Leave us an open feedback about your experience so far";
-    inner.appendChild(p1);
-
-    let commentBox = document.createElement("input");
-    commentBox.type = "text";
-    commentBox.placeholder = "Write your comment here";
-    inner.appendChild(commentBox);
-
-    let infoButton = document.createElement('button');
-    infoButton.classList.add('info-btn');
-    infoButton.innerText ='MORE INFO';
-    inner.appendChild(infoButton);
 }
 
 function renderWelcome() {
@@ -420,6 +443,8 @@ function shuffleArray(arr) { // i reused this from yesterday
 window.onload = function() {
     renderWelcome();
 }
+
+//remember to change back to renderWelcome
 
 
 
