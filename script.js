@@ -152,11 +152,12 @@ let percentageWrong = 100 - percentageRight
 let pieChart = document.querySelector("#pie-chart")
 pieChart.classList.add("pie-chart")
 pieChart.style = `--p:${percentageWrong};`
- 
+
 function renderResult() {
    
     // correct div
     let correctPercentageNode = document.querySelector("#correctPercentage")
+    correctPercentageNode.classList.add("correctPercentageNode")
     correctPercentageNode.innerText = "Correct"
  
     let correctPercentage = document.createElement("div")
@@ -164,11 +165,13 @@ function renderResult() {
     correctPercentageNode.appendChild(correctPercentage)
  
     let questionsCorrect = document.createElement("div")
+    questionsCorrect.classList.add("questionsCorrect")
     questionsCorrect.innerText = `${points}/${questions.length} questions`
     correctPercentageNode.appendChild(questionsCorrect)
  
     // wrong div
     let wrongPercentageNode = document.querySelector("#wrongPercentage")
+    wrongPercentageNode.classList.add("wrongPercentageNode")
     wrongPercentageNode.innerText = "Wrong"
  
     let wrongPercentage = document.createElement("div")
@@ -176,6 +179,7 @@ function renderResult() {
     wrongPercentageNode.appendChild(wrongPercentage)
    
     let questionsWrong = document.createElement("div")
+    questionsWrong.classList.add("questionsWrong")
     questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
     wrongPercentageNode.appendChild(questionsWrong)
    
@@ -186,13 +190,13 @@ function renderResult() {
     resultStatementNode.appendChild(resultStatement)
  
 
-//  having problem to construct the if statement into the div
     if (percentageRight >= 60) {
-        console.log("Congratulations, you passed the exam! We'll send you a certificate in a few minutes. Check your email (including promotions and spam folder)")
+        resultStatement.innerText = "Congratulations! You passed the exam! We'll send you a certificate in a few minutes. Check your email (including promotions and spam folder)"
     } else {
-        console.log("Oh no! Unfortunately you didn't pass this one.")
+        resultStatement.innerText = "Oh no! Unfortunately you didn't pass this one."
     }
- 
+//  having problem to construct the if statement into the div
+
 }
 console.log(renderResult())
 
