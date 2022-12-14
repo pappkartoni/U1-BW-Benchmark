@@ -22,6 +22,10 @@ h2 {
   color: #d20094;
 }
 
+h3 {
+  font-size: 50px;
+}
+
 .container {
   height: 100vh;
   background-image: url("../assets/bg.jpg");
@@ -145,6 +149,9 @@ img {
 }
 
 .answer-btn {
+  width: 40%;
+  margin: 2%;
+  height: 55px;
   font-size: 16px;
   background-color: rgba(11, 17, 59, 0.5019607843);
   border-radius: 500px;
@@ -366,4 +373,14 @@ img {
   position: absolute;
   top: 25%;
   left: 43%;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.qtn-footer span {
+  color: #d20094;
 }/*# sourceMappingURL=style.css.map */

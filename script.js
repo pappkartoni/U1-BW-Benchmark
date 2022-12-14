@@ -49,9 +49,9 @@ function renderQuestion() {
         inner.innerHTML = "";
         selectedAnswer = null;
 
-        let h1 = document.createElement("h1");
-        h1.innerText = question.question + points;
-        inner.appendChild(h1);
+        let h3 = document.createElement("h3");
+        h3.innerText = question.question + points;
+        inner.appendChild(h3);
         
         let buttonContainer = document.createElement("div");
         buttonContainer.classList.add("btn-container");
@@ -75,6 +75,11 @@ function renderQuestion() {
         nextButton.innerText = "NEXT QUESTION";
         nextButton.onclick = checkAnswer;
         inner.appendChild(nextButton);
+
+        let footer = document.createElement("div");
+        footer.classList.add("qtn-footer");
+        footer.innerHTML = `QUESTION ${qNumber+1}<span> / ${questions.length}</span>`
+        inner.appendChild(footer);
 } 
 
 function checkAnswer() {
