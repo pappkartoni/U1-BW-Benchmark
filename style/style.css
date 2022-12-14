@@ -38,6 +38,7 @@ h2 {
 
 .il-ctr {
   display: inline-block;
+  font-size: 50px;
 }
 
 span {
@@ -223,8 +224,8 @@ img {
   font-size: 12px;
   z-index: 0;
   position: absolute;
-  top: 25%;
-  left: 45%;
+  top: 17%;
+  left: 39%;
   font-size: 14px;
   color: whitesmoke;
 }
@@ -286,6 +287,7 @@ img {
   padding-top: 0;
 }
 
+
 .header h3 {
   margin-top: 0;
 }
@@ -293,22 +295,6 @@ img {
 .questionsWrong, .questionsCorrect {
   font-size: 15px;
   filter: opacity(50%);
-}
-
-.correctPercentageNode, .wrongPercentageNode {
-  font-size: 50px;
-}
-
-.correctPercentageNode {
-  position: absolute;
-  top: 10%;
-  left: 20%;
-}
-
-.wrongPercentageNode {
-  position: absolute;
-  top: 10%;
-  right: 20%;
 }
 
 .middle-box {
@@ -358,12 +344,4 @@ img {
   border-radius: 50%;
 }
 
-.congrat {
-  width: 150px;
-  height: 10px;
-  font-size: 12px;
-  z-index: 0;
-  position: absolute;
-  top: 25%;
-  left: 43%;
 }/*# sourceMappingURL=style.css.map */

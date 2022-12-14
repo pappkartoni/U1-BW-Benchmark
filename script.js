@@ -43,110 +43,76 @@ function startTimer() {
   }, 1000); // 1000 milliseconds = 1 second
 }
 
-function renderQuestion() {
-        let question = questions[qNumber];        
-        let inner = document.querySelector('.inner');
-        inner.innerHTML = "";
-        selectedAnswer = null;
+//RESULT PAGE
+function renderResult(){
+    let inner = document.querySelector('.inner');
+    inner.innerHTML = "";
 
-        let h1 = document.createElement("h1");
-        h1.innerText = question.question + points;
-        inner.appendChild(h1);
-        
-        let buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("btn-container");
-        inner.appendChild(buttonContainer);
+// creating header 
+    let headerdiv = document.createElement("div");
+    headerdiv.classList.add("header");
+    inner.appendChild(headerdiv)
 
-        let answers = shuffleArray([question.correct].concat(question.incorrects));
-
-        for (let i = 0; i < answers.length; i++) {
-            let answer = answers[i];
-            let btn = document.createElement("button");
-
-            btn.classList.add("answer-btn", "unselected");
-            btn.setAttribute("id", i);
-            btn.innerText = answer;
-            btn.addEventListener("click", selectAnswer);
-            buttonContainer.appendChild(btn);
-        }
-        qNumber++;
-} 
-
-function checkAnswer() {
-    let answer = selectedAnswer;
-    let correctOne = questions[qNumber].correct;
-    if (answer === correctOne) {
-        points++
-    }
-    if (qNumber >= questions.length) {
-        renderResult();
-    } else {
-        renderQuestion()
-    }
-}
-
-function selectAnswer(event) { // TODO
-    selectedAnswer = event.target.innerText;
-    event.target.classList.toggle("selected");
-    event.target.classList.toggle("unselected");
-}
-
-function startBenchmark() {
-    let check = document.getElementById("check");
-        if (check.checked) {
-            document.querySelector("inner").classList.remove("flt-left");
-            renderQuestion();
-        } else {
-            alert("Please promise us to be honest, honey!")
-        }
-    }
-
-function renderResult() {
-    let percentageRight = 100 * (points/questions.length)
-    let percentageWrong = 100 - percentageRight
+    let resultText = document.createElement("h2")
+    resultText.innerText = "Results"
+    resultText.classList.add("result")
+    headerdiv.appendChild(resultText)
     
-    //pie chart / donut chart
-    let pieChart = document.querySelector("#pie-chart")
-    pieChart.classList.add("pie-chart")
-    pieChart.style = `--p:${percentageWrong};`
+    let summary = document.createElement("h3")
+    summary.innerText = "The summary of your answers:"
+    headerdiv.appendChild(summary)
+
+// creating middle box
+    let middlebox = document.createElement("div")
+    middlebox.classList.add ("middle-box")
+    inner.appendChild(middlebox)
+
+// creating result body
+    let resultBody = document.createElement("div")
+    resultBody.classList.add("resultbody")
+    middlebox.appendChild(resultBody)
+
+// creating div il-ctr, percantages and chart
+    let percentageRight = (100 * (points/questions.length)).toFixed(1)
+    let percentageWrong = (100 - percentageRight).toFixed(1)
+
+// correct div
+    let ilCtr = document.createElement("div")
+    ilCtr.classList.add("il-ctr")
+    resultBody.appendChild(ilCtr)
     
-    //write a function calculating the correct answer
-    pieChart = document.querySelector(".pie-chart")
-    if (pieChart !== null) {
-        pieChart.style = "--p:60;"
-    }
-    function changingThePercantageofPieChart(string) {
-        pieChart.style = string
-    }
-    // correct div
+    let correctP = document.createElement("div")
+    correctP.setAttribute("id","correctPercentage")
+    ilCtr.appendChild(correctP)
+
     let correctPercentageNode = document.querySelector("#correctPercentage")
-    correctPercentageNode.classList.add("correctPercentageNode")
     correctPercentageNode.innerText = "Correct"
- 
+
     let correctPercentage = document.createElement("div")
     correctPercentage.innerText = `${percentageRight} %`
     correctPercentageNode.appendChild(correctPercentage)
- 
+
     let questionsCorrect = document.createElement("div")
     questionsCorrect.classList.add("questionsCorrect")
     questionsCorrect.innerText = `${points}/${questions.length} questions`
     correctPercentageNode.appendChild(questionsCorrect)
- 
-    // wrong div
-    let wrongPercentageNode = document.querySelector("#wrongPercentage")
-    wrongPercentageNode.classList.add("wrongPercentageNode")
-    wrongPercentageNode.innerText = "Wrong"
- 
-    let wrongPercentage = document.createElement("div")
-    wrongPercentage.innerText = `${percentageWrong} %`
-    wrongPercentageNode.appendChild(wrongPercentage)
-   
-    let questionsWrong = document.createElement("div")
-    questionsWrong.classList.add("questionsWrong")
-    questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
-    wrongPercentageNode.appendChild(questionsWrong)
-   
-    //result statement display pass or fail
+    
+//pie chart / donut chart
+
+    let pieChartDiv = document.createElement("div")
+    pieChartDiv.setAttribute("id","pie-chart")
+    resultBody.appendChild(pieChartDiv)
+
+    let pieChart = document.querySelector("#pie-chart")
+    pieChart.classList.add("pie-chart")
+    pieChart.style = `--p:${percentageWrong};`
+
+//result statement display pass or fail
+
+    let statement = document.createElement("div")
+    statement.classList.add("resultStatement")
+    resultBody.appendChild(statement)
+
     let resultStatementNode = document.querySelector(".resultStatement")
     let resultStatement = document.createElement("p")
     resultStatement.innerText = ""
@@ -158,7 +124,42 @@ function renderResult() {
     } else {
         resultStatement.innerText = "Oh no! Unfortunately you didn't pass this one."
     }
-//  having problem to construct the if statement into the div
+
+// wrong div
+
+    let ilCtr2 = document.createElement("div")
+    ilCtr2.classList.add("il-ctr")
+    resultBody.appendChild(ilCtr2)
+
+    let wrongP = document.createElement("div")
+    wrongP.setAttribute("id","wrongPercentage")
+    ilCtr2.appendChild(wrongP)
+
+    let wrongPercentageNode = document.querySelector("#wrongPercentage")
+    wrongPercentageNode.innerText = "Wrong"
+ 
+    let wrongPercentage = document.createElement("div")
+    wrongPercentage.innerText = `${percentageWrong} %`
+    wrongPercentageNode.appendChild(wrongPercentage)
+   
+    let questionsWrong = document.createElement("div")
+    questionsWrong.classList.add("questionsWrong")
+    questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
+    wrongPercentageNode.appendChild(questionsWrong)
+   
+
+// creating rate-us button
+    let btnDiv = document.createElement("div")
+    inner.appendChild(btnDiv)
+
+    let rateUsBtn = document.createElement("button")
+    rateUsBtn.classList.add("rate-us-btn");
+    rateUsBtn.innerText = ("RATE US")
+    btnDiv.appendChild(rateUsBtn)
+    rateUsBtn.onclick = function() {
+        renderFeedback()
+    }
+
 
 }
 
@@ -319,6 +320,8 @@ function shuffleArray(arr) { // i reused this from yesterday
 window.onload = function() {
     renderWelcome();
 }
+
+//remember to change back to renderWelcome
 
 
 
