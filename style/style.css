@@ -117,65 +117,6 @@ img {
   display: inline;
 }
 
-.middle-box {
-  position: relative;
-}
-
-.pie-chart {
-  --p:20;
-  --b:40px;
-  --c:#c2128d;
-  --w:320px;
-  
-  width:var(--w);
-  aspect-ratio:1;
-  position:relative;
-  display:inline-grid;
-  margin:5px;
-  place-content:center;
-  font-size:25px;
-  font-weight:bold;
-  font-family:sans-serif;
-}
-.pie-chart:before,
-.pie-chart:after {
-  content:"";
-  position:absolute;
-  border-radius:50%;
-}
-
-.pie-chart:before {
-  inset:0;
-  background:
-    radial-gradient(farthest-side,var(--c) 98%,#0000) top/var(--b) var(--b) no-repeat,
-    conic-gradient(var(--c) calc(var(--p)*1%),rgb(0, 255, 255) 0);
-  -webkit-mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-  mask:radial-gradient(farthest-side,#0000 calc(99% - var(--b)),#000 calc(100% - var(--b)));
-  background-size:0 0,auto;
-}
-.pie-chart:after {
-  inset:calc(50% - var(--b)/2);
-  background:var(--c);
-  transform:rotate(calc(var(--p)*3.6deg)) translateY(calc(50% - var(--w)/2));
-  content:none;
-}
-.pie-chart:hover {
-  box-shadow: 0px 0px 20px rgba(0,0,0,6);
-  border-radius: 50%;
-}
-
-.resultStatement{
-  width: 150px;
-  height: 10px ;
-  font-size: 12px;
-  z-index: 0;
-  position: absolute;
-  top: 25%;
-  left: 45%;
-  font-size: 14px;
-  color: whitesmoke;
-}
-
 .checkbar {
   display: flex;
   flex-wrap: wrap;
@@ -229,6 +170,96 @@ img {
   background-color: #900080;
 }
 
+.middle-box {
+  position: relative;
+}
+
+.pie-chart {
+  --p:20;
+  --b:40px;
+  --c:#c2128d;
+  --w:320px;
+  width: var(--w);
+  aspect-ratio: 1;
+  position: relative;
+  display: inline-grid;
+  margin: 5px;
+  place-content: center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.pie-chart:before,
+.pie-chart:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.pie-chart:before {
+  inset: 0;
+  background: radial-gradient(farthest-side, var(--c) 98%, rgba(0, 0, 0, 0)) top/var(--b) var(--b) no-repeat, conic-gradient(var(--c) calc(var(--p) * 1%), rgb(0, 255, 255) 0);
+  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(99% - var(--b)), #000 calc(100% - var(--b)));
+  background-size: 0 0, auto;
+}
+
+.pie-chart:after {
+  inset: calc(50% - var(--b) / 2);
+  background: var(--c);
+  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+  content: none;
+}
+
+.pie-chart:hover {
+  box-shadow: 0px 0px 20px rgb(0, 0, 0);
+  border-radius: 50%;
+}
+
+.resultStatement {
+  width: 150px;
+  height: 10px;
+  font-size: 12px;
+  z-index: 0;
+  position: absolute;
+  top: 25%;
+  left: 45%;
+  font-size: 14px;
+  color: whitesmoke;
+}
+
+.checkbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.checkbar div {
+  line-height: 2.5rem;
+}
+
+.checkbar label {
+  font-size: 16px;
+}
+
+.checkbar input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: bottom;
+  position: relative;
+  top: -9px;
+  border: 2px solid white;
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbar input[type=checkbox]:checked {
+  background: #00FFFF;
+}
+
 .rate-us-btn {
   background-color: Transparent;
   border: white solid;
@@ -244,27 +275,27 @@ img {
   cursor: pointer;
 }
 
-.result{
-  color:whitesmoke;
-  font-size : 50px;
+.result {
+  color: whitesmoke;
+  font-size: 50px;
   padding-bottom: 0px;
 }
 
-#correctPercentage , #wrongPercentage {
+#correctPercentage, #wrongPercentage {
   color: whitesmoke;
-  padding-top:0 ;
+  padding-top: 0;
 }
 
-.header h3{
+.header h3 {
   margin-top: 0;
 }
 
-.questionsWrong , .questionsCorrect{
+.questionsWrong, .questionsCorrect {
   font-size: 15px;
   filter: opacity(50%);
 }
 
-.correctPercentageNode,.wrongPercentageNode{
+.correctPercentageNode, .wrongPercentageNode {
   font-size: 50px;
 }
 
@@ -335,4 +366,4 @@ img {
   position: absolute;
   top: 25%;
   left: 43%;
-}
+}/*# sourceMappingURL=style.css.map */

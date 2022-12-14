@@ -21,23 +21,14 @@ let points = 0;
 let rating = 0;
 let selectedAnswer = null;
 
-function nextQuestion() {
-    checkAnswer();
-    qNumber++;
-    window.location.href = `http://localhost:5500/BW/question${qNumber}.html`
-}
-
-
-// Set the number of seconds for the timer
-const timerLength = 60;
-
-// Set the starting time for the timer
-let timeLeft = timerLength;
-
-// Create a function to start the timer
 function startTimer() {
-  // Use setInterval to count down the seconds
-  const timerInterval = setInterval(function() {
+    // Set the number of seconds for the timer
+    const timerLength = 60;
+
+    // Set the starting time for the timer
+    let timeLeft = timerLength;
+    // Use setInterval to count down the seconds
+    const timerInterval = setInterval(function() {
     // Decrement the time left by 1 second
     timeLeft--;
 
@@ -79,33 +70,25 @@ function renderQuestion() {
             buttonContainer.appendChild(btn);
         }
         qNumber++;
-
 } 
 
 function checkAnswer() {
-    let answer = selectedAnswer; // we have to actually get the selected answer
+    let answer = selectedAnswer;
     let correctOne = questions[qNumber].correct;
     if (answer === correctOne) {
         points++
     }
-    renderQuestion()
+    if (qNumber >= questions.length) {
+        renderResult();
+    } else {
+        renderQuestion()
+    }
 }
 
 function selectAnswer(event) { // TODO
     selectedAnswer = event.target.innerText;
     event.target.classList.toggle("selected");
     event.target.classList.toggle("unselected");
-}
-
-function renderButtons() {
-
-}
-
-function checkAnswer() {
-    if (document.getElementById('')) {
-        
-    }
-
 }
 
 function startBenchmark() {
@@ -118,31 +101,23 @@ function startBenchmark() {
         }
     }
 
-
-function renderWelcome() {
-
-}
-
-// Global var of result
-let percentageRight = 100 * (points/questions.length)
-let percentageWrong = 100 - percentageRight
-
-//pie chart / donut chart
-let pieChart = document.querySelector("#pie-chart")
-pieChart.classList.add("pie-chart")
-pieChart.style = `--p:${percentageWrong};`
-
-//write a function calculating the correct answer
-let pieChart = document.querySelector(".pie-chart")
-if (pieChart !== null) {
-    pieChart.style = "--p:60;"
-}
-function changingThePercantageofPieChart(string) {
-    pieChart.style = string
-}
-
 function renderResult() {
-   
+    let percentageRight = 100 * (points/questions.length)
+    let percentageWrong = 100 - percentageRight
+    
+    //pie chart / donut chart
+    let pieChart = document.querySelector("#pie-chart")
+    pieChart.classList.add("pie-chart")
+    pieChart.style = `--p:${percentageWrong};`
+    
+    //write a function calculating the correct answer
+    pieChart = document.querySelector(".pie-chart")
+    if (pieChart !== null) {
+        pieChart.style = "--p:60;"
+    }
+    function changingThePercantageofPieChart(string) {
+        pieChart.style = string
+    }
     // correct div
     let correctPercentageNode = document.querySelector("#correctPercentage")
     correctPercentageNode.classList.add("correctPercentageNode")
@@ -186,44 +161,41 @@ function renderResult() {
 //  having problem to construct the if statement into the div
 
 }
-console.log(renderResult())
-
 
 function renderFeedback() {
+    let inner = document.querySelector('.inner');
+    inner.innerHTML = "";
+
+    let h1 = document.createElement("h1");
+    h1.innerText = "Tell us how it's going";
+    inner.appendChild(h1);
+
+    let p = document.createElement("p");
+    p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
+    inner.appendChild(p);
     
-  let inner = document.querySelector('.inner');
-  inner.innerHTML = "";
-
-  let h1 = document.createElement("h1");
-  h1.innerText = "Tell us how it's going";
-  inner.appendChild(h1);
-
-  let p = document.createElement("p");
-  p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
-  inner.appendChild(p);
-  
-
-  //let starsContainer = document.createElement("div");
-  //let stars = document.getElementById('stars');
+    let stars = document.createElement("div");
+    stars.setAttribute("id", "stars");
+    inner.appendChild(stars);
+    renderStars();
 
 
+    let commentBoxContainer = document.createElement("div");
+    commentBoxContainer.classList.add("comment-box"); 
 
- let commentBoxContainer = document.createElement("div");
- commentBoxContainer.classList.add("comment-box"); 
+    let p1 = document.createElement("p");
+    p1.innerText = "Leave us an open feedback about your experience so far";
+    inner.appendChild(p1);
 
-  let p1 = document.createElement("p");
-  p1.innerText = "Leave us an open feedback about your experience so far";
-  inner.appendChild(p1);
+    let commentBox = document.createElement("input");
+    commentBox.type = "text";
+    commentBox.placeholder = "Write your comment here";
+    inner.appendChild(commentBox);
 
-  let commentBox = document.createElement("input");
-  commentBox.type = "text";
-  commentBox.placeholder = "Write your comment here";
-  inner.appendChild(commentBox);
-
-  let infoButton = document.createElement('button');
-  infoButton.classList.add('info-btn');
-  infoButton.innerText ='MORE INFO';
-  inner.appendChild(infoButton);
+    let infoButton = document.createElement('button');
+    infoButton.classList.add('info-btn');
+    infoButton.innerText ='MORE INFO';
+    inner.appendChild(infoButton);
 }
 
 function renderWelcome() {
