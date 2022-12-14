@@ -163,20 +163,23 @@ function renderQuestion() {
 function checkAnswer() {
     clearInterval(timerInterval);
     let selected = document.querySelector(".selected");
-    clearInterval(timerInterval);
-    if (selected !== null || timeout) {
-        let answer = selected ? selected.innerText : null;
-        let correctOne = questions[qNumber].correct;
-        if (answer === correctOne) {
-            points++
-        }
-        if (qNumber >= questions.length - 1) {
-            renderResult();
-        } else {
-            qNumber++;
 
-            renderQuestion();
+    if(!timeout) {
+        let selected = document.querySelector(".selected");
+        if (selected !== null) {
+            let answer = selected ? selected.innerText : null;
+            let correctOne = questions[qNumber].correct;
+            if (answer === correctOne) {
+                points++
+            }
         }
+    }
+    if (qNumber >= questions.length - 1) {
+        renderResult();
+    } else {
+        qNumber++;
+
+        renderQuestion();
     }
 }
 
@@ -530,6 +533,7 @@ function onTimesUp() {
     for (let b of buttons) {
         b.disabled = true; // no hover as well?
     }
+    checkAnswer();
   }
 
   function startTimer() {
