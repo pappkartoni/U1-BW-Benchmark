@@ -118,6 +118,20 @@ function startBenchmark() {
         }
     }
 
+
+function renderWelcome() {
+
+}
+
+// Global var of result
+let percentageRight = 100 * (points/questions.length)
+let percentageWrong = 100 - percentageRight
+
+//pie chart / donut chart
+let pieChart = document.querySelector("#pie-chart")
+pieChart.classList.add("pie-chart")
+pieChart.style = `--p:${percentageWrong};`
+
 //write a function calculating the correct answer
 let pieChart = document.querySelector(".pie-chart")
 if (pieChart !== null) {
@@ -128,29 +142,52 @@ function changingThePercantageofPieChart(string) {
 }
 
 function renderResult() {
-    container.innerHTML = "";
-    //creating empty container to store the value
-    let finalResult = document.createElement("div")
-    let passOrFailStatement = document.createElement("h2")
-    
-    finalResult.appendChild(passOrFailStatement);
-    
-    let finalCorrectScore = document.createElement("div")
-    finalCorrectScore.innertext = ("correct mark")
-    //need the value of the previous mark
-    finalResult.appendChild(finalCorrectScore)
-    
-    let finalWrongScore = document.createElement("div")
-    finalCorrectScore.innertext = ("full mark - correct mark")
-    //need the value of the previous mark
-    finalResult.appendChild(finalWrongScore)
-    
-    if (mark > 60) {
-        return passOrFailStatement.innerText = ("Congratulations! You passed the exam. We'll send you the certificate in few minutes. Check your email (including promotions / spam folder)")
+   
+    // correct div
+    let correctPercentageNode = document.querySelector("#correctPercentage")
+    correctPercentageNode.classList.add("correctPercentageNode")
+    correctPercentageNode.innerText = "Correct"
+ 
+    let correctPercentage = document.createElement("div")
+    correctPercentage.innerText = `${percentageRight} %`
+    correctPercentageNode.appendChild(correctPercentage)
+ 
+    let questionsCorrect = document.createElement("div")
+    questionsCorrect.classList.add("questionsCorrect")
+    questionsCorrect.innerText = `${points}/${questions.length} questions`
+    correctPercentageNode.appendChild(questionsCorrect)
+ 
+    // wrong div
+    let wrongPercentageNode = document.querySelector("#wrongPercentage")
+    wrongPercentageNode.classList.add("wrongPercentageNode")
+    wrongPercentageNode.innerText = "Wrong"
+ 
+    let wrongPercentage = document.createElement("div")
+    wrongPercentage.innerText = `${percentageWrong} %`
+    wrongPercentageNode.appendChild(wrongPercentage)
+   
+    let questionsWrong = document.createElement("div")
+    questionsWrong.classList.add("questionsWrong")
+    questionsWrong.innerText = `${questions.length - points}/${questions.length} questions`
+    wrongPercentageNode.appendChild(questionsWrong)
+   
+    //result statement display pass or fail
+    let resultStatementNode = document.querySelector(".resultStatement")
+    let resultStatement = document.createElement("p")
+    resultStatement.innerText = ""
+    resultStatementNode.appendChild(resultStatement)
+ 
+
+    if (percentageRight >= 60) {
+        resultStatement.innerText = "Congratulations! You passed the exam! We'll send you a certificate in a few minutes. Check your email (including promotions and spam folder)"
     } else {
-        return passOrFailStatement.innerText = ("Oh no! Unfortunately you didnt pass this one")
+        resultStatement.innerText = "Oh no! Unfortunately you didn't pass this one."
     }
+//  having problem to construct the if statement into the div
+
 }
+console.log(renderResult())
+
 
 function renderFeedback() {
     
