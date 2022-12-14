@@ -22,6 +22,10 @@ h2 {
   color: #d20094;
 }
 
+h3 {
+  font-size: 50px;
+}
+
 .container {
   height: 100vh;
   background-image: url("../assets/bg.jpg");
@@ -146,6 +150,9 @@ img {
 }
 
 .answer-btn {
+  width: 40%;
+  margin: 2%;
+  height: 55px;
   font-size: 16px;
   background-color: rgba(11, 17, 59, 0.5019607843);
   border-radius: 500px;
@@ -344,4 +351,77 @@ img {
   border-radius: 50%;
 }
 
+.congrat {
+  width: 150px;
+  height: 10px;
+  font-size: 12px;
+  z-index: 0;
+  position: absolute;
+  top: 25%;
+  left: 43%;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.qtn-footer span {
+  color: #d20094;
+}
+
+.base-timer {
+  position: relative;
+  height: 300px;
+  width: 300px;
+}
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.base-timer__label {
+  position: absolute;
+  /* Size should match the parent container */
+  width: 300px;
+  height: 300px;
+  /* Keep the label aligned to the top */
+  top: 0;
+  /* Create a flexible box that centers content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Sort of an arbitrary number; adjust to your liking */
+  font-size: 48px;
+}
+
+.base-timer__path-remaining {
+  stroke-width: 7px;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: 1s linear all;
+  fill-rule: nonzero;
+  stroke: currentColor;
+}
+
+.base-timer__svg {
+  /* Flips the svg and makes the animation to move left-to-right */
+  transform: scaleX(-1);
+}
+
+.base-timer__path-remaining.blue {
+  color: #00FFFF;
+}
+
+.base-timer__path-remaining.pink {
+  color: #d20094;
 }/*# sourceMappingURL=style.css.map */

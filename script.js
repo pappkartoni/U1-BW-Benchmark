@@ -4,7 +4,7 @@ const questions = [
         correct: "True",
         incorrects: ["False"],
         type: "multiple",
-        time: 20
+        time: 10
     },
     
     { 
@@ -20,6 +20,7 @@ let qNumber = 0;
 let points = 0;
 let rating = 0;
 let selectedAnswer = null;
+let timeout = false;
 
 function startTimer() {
     // Set the number of seconds for the timer
@@ -48,10 +49,11 @@ function renderQuestion() {
         let inner = document.querySelector('.inner');
         inner.innerHTML = "";
         selectedAnswer = null;
+        timeout = false;
 
-        let h1 = document.createElement("h1");
-        h1.innerText = question.question + points;
-        inner.appendChild(h1);
+        let h3 = document.createElement("h3");
+        h3.innerText = question.question + points;
+        inner.appendChild(h3);
         
         let buttonContainer = document.createElement("div");
         buttonContainer.classList.add("btn-container");
@@ -69,32 +71,50 @@ function renderQuestion() {
             btn.addEventListener("click", selectAnswer);
             buttonContainer.appendChild(btn);
         }
-        qNumber++;
+
+        let nextButton = document.createElement("button");
+        nextButton.classList.add("info-btn");
+        nextButton.innerText = "NEXT QUESTION";
+        nextButton.onclick = checkAnswer;
+        inner.appendChild(nextButton);
+
+        let footer = document.createElement("div");
+        footer.classList.add("qtn-footer");
+        footer.innerHTML = `QUESTION ${qNumber+1}<span> / ${questions.length}</span>`
+        inner.appendChild(footer);
+        renderTimer();
 } 
 
 function checkAnswer() {
-    let answer = selectedAnswer;
-    let correctOne = questions[qNumber].correct;
-    if (answer === correctOne) {
-        points++
-    }
-    if (qNumber >= questions.length) {
-        renderResult();
-    } else {
-        renderQuestion()
+    let selected = document.querySelector(".selected");
+    if (selected !== null || timeout) {
+        let answer = selected ? selected.innerText : null;
+        let correctOne = questions[qNumber].correct;
+        if (answer === correctOne) {
+            points++
+        }
+        if (qNumber >= questions.length) {
+            renderResult();
+        } else {
+            qNumber++;
+            renderQuestion();
+        }
     }
 }
 
 function selectAnswer(event) { // TODO
     selectedAnswer = event.target.innerText;
-    event.target.classList.toggle("selected");
-    event.target.classList.toggle("unselected");
+    let buttons = document.getElementsByClassName("answer-btn");
+    for (let b of buttons) {
+        b.classList.remove("selected");
+    }
+    event.target.classList.add("selected");
 }
 
 function startBenchmark() {
     let check = document.getElementById("check");
         if (check.checked) {
-            document.querySelector("inner").classList.remove("flt-left");
+            document.querySelector(".inner").classList.remove("flt-left");
             renderQuestion();
         } else {
             alert("Please promise us to be honest, honey!")
@@ -327,6 +347,87 @@ function hoverStar(event) {
 function leaveStar(event) {
     renderRating(rating);
 }
+
+const COLOR_CODES = {
+    info: {
+        color: "blue"
+    },
+    alert: {
+        color: "pink",
+        threshold: 5
+    }
+};
+  
+let remainingPathColor = COLOR_CODES.info.color;
+
+function renderTimer() {
+    let inner = document.querySelector(".inner");
+    let timeLimit = questions[qNumber].time;
+    let timePassed = 0;
+    let timeLeft = timeLimit;
+    let timerInterval = null;
+
+    let timerdiv = document.createElement("div");
+    timerdiv.classList.add("base-timer");
+    inner.appendChild(timerdiv);
+    timerdiv.innerHTML = `  <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                                <g class="base-timer__circle">
+                                    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+                                    <path
+                                    id="base-timer-path-remaining"
+                                    class="base-timer__path-remaining ${remainingPathColor}"
+                                    d="
+                                      M 50, 50
+                                      m -45, 0
+                                      a 45,45 0 1,0 90,0
+                                      a 45,45 0 1,0 -90,0
+                                    "
+                                  ></path>
+                                </g>
+                            </svg>
+                            <span id="base-timer-label" class="base-timer__label">
+                            ${timeLeft}
+                            </span>`;
+    timerInterval = setInterval(() => {
+        timePassed = timePassed += 1;
+        timeLeft = timeLimit - timePassed;
+        setCircleDasharray(timeLeft, timeLimit);
+        document.getElementById("base-timer-label").innerText = timeLeft;
+        setRingColor(timeLeft);
+
+        if (timeLeft === 0) {
+            clearInterval(timerInterval);
+            timeout = true;
+            let buttons = document.getElementsByClassName("answer-btn");
+            for (let b of buttons) {
+                b.disabled = true; // no hover as well?
+            }
+        }
+    }, 1000);
+}
+
+function calculateTimeFraction(timeLeft, timeLimit) {
+    const rawTimeFraction = (timeLeft) / (timeLimit);
+    return rawTimeFraction - (1 / timeLimit) * (1 - rawTimeFraction);
+}
+
+function setCircleDasharray(timeLeft, timeLimit) {
+    const circleDasharray = `${(calculateTimeFraction(timeLeft, timeLimit) * 283).toFixed(0)} 283`;
+    document.getElementById("base-timer-path-remaining").setAttribute("stroke-dasharray", circleDasharray);
+  }
+
+function setRingColor(timeLeft) {
+    const { alert, info } = COLOR_CODES;
+    if (timeLeft <= alert.threshold) {
+        document
+          .getElementById("base-timer-path-remaining")
+          .classList.add(alert.color);
+          document
+          .getElementById("base-timer-path-remaining")
+          .classList.remove(info.color);
+    }    
+}
+
 
 function shuffleArray(arr) { // i reused this from yesterday
     for (let i=0;i<arr.length-1; i++) {
