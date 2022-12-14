@@ -1,4 +1,4 @@
-const questions = [
+const questions1 = [
     {
         question: "If you type the following code in the console window, what result will you get? 3 > 2 > 1 === false;",
         correct: "True",
@@ -15,6 +15,89 @@ const questions = [
         time: 20
     },
 ];
+const doomquiz = [
+    {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "medium",
+        question: "What is MF Doom's real name?",
+        correct: "Daniel Dumile",
+        incorrects: ["Dwayne Michael Carter Jr.", "Shawn Carter", "Otis Jackson Jr."],
+        time: 10,
+      },
+      {
+        category: "DOOM",
+        type: "boolean",
+        difficulty: "easy",
+        question: "MF Doom is still alive.",
+        correct: "False",
+        incorrects: ["True"],
+        time: 10,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "medium",
+        question: "When did MF Doom release his first solo studio album 'Operation Doomsday'?",
+        correct: "1999",
+        incorrects: ["1997", "1998", "2000"],
+        time: 40,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "easy",
+        question: "With whom did MF Doom collaborate on the 2004 LP 'Madvillainy'?",
+        correct: "Madlib",
+        incorrects: ["Bishop Nehru", "Czarface", "Danny Brown"],
+        time: 30,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "medium",
+        question: "Which of these is NOT a pseudonym of MF Doom?",
+        correct: "Quasimoto",
+        incorrects: ["Viktor Vaughn", "Zev Love X", "King Geedorah"],
+        time: 45,
+      },
+      {
+        category: "DOOM",
+        type: "boolean",
+        difficulty: "easy",
+        question: "Has MF Doom ever been featured on a Gorillaz album?",
+        correct: "True",
+        incorrects: ["False"],
+        time: 10,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "medium",
+        question: "What was the name of the group MF Doom formed with his brother in 1988?",
+        correct: "KMD",
+        incorrects: ["RZA", "CREAM", "WTF"],
+        time: 30,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "hard",
+        question: "What was the title of their only commercially released album?",
+        correct: "Mr. Hood",
+        incorrects: ["Young, Broke & Infamous", "Reasonabable Doubt", "Playtime is over"],
+        time: 45,
+      },
+      {
+        category: "DOOM",
+        type: "multiple",
+        difficulty: "hard",
+        question: "MF Doom's signature metal mask is based on a prop of which movie?",
+        correct: "Gladiator",
+        incorrects: ["300", "Troy", "Spartacus"],
+        time: 45,
+      },
+];
 
 let qNumber = 0;
 let points = 0;
@@ -25,6 +108,7 @@ let timerInterval = null;
 let timeLimit = 0;
 let timePassed = 0;
 let timeLeft = 0;
+let questions = questions1;
 
 function renderQuestion() {
         let question = questions[qNumber];        
@@ -41,7 +125,7 @@ function renderQuestion() {
         renderTimer();
         
         let h3 = document.createElement("h3");
-        h3.innerText = question.question + points;
+        h3.innerText = question.question;
         inner.appendChild(h3);
         
         let buttonContainer = document.createElement("div");
@@ -476,13 +560,13 @@ function setCircleDasharray() {
 
 function setRingColor(timeLeft) {
     const { alert, info } = COLOR_CODES;
-    if (timeLeft <= alert.threshold) {
+    if (timeLeft <= 5) {
         document
           .getElementById("base-timer-path-remaining")
-          .classList.add(alert.color);
+          .classList.add("pink");
           document
           .getElementById("base-timer-path-remaining")
-          .classList.remove(info.color);
+          .classList.remove("blue");
     }    
 }
 
