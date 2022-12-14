@@ -3,11 +3,11 @@ body {
   font-family: "Inter", Arial, Helvetica, sans-serif;
   margin: 0;
   color: white;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 h1 {
-  font-size: 75px;
+  font-size: 60px;
   font-family: "Outfit", Arial, Helvetica, sans-serif;
   margin-bottom: 10px;
   line-height: 60px;
@@ -42,7 +42,6 @@ h3 {
 
 .il-ctr {
   display: inline-block;
-  font-size: 50px;
 }
 
 span {
@@ -231,8 +230,8 @@ img {
   font-size: 12px;
   z-index: 0;
   position: absolute;
-  top: 17%;
-  left: 39%;
+  top: 25%;
+  left: 45%;
   font-size: 14px;
   color: whitesmoke;
 }
@@ -294,7 +293,6 @@ img {
   padding-top: 0;
 }
 
-
 .header h3 {
   margin-top: 0;
 }
@@ -302,6 +300,22 @@ img {
 .questionsWrong, .questionsCorrect {
   font-size: 15px;
   filter: opacity(50%);
+}
+
+.correctPercentageNode, .wrongPercentageNode {
+  font-size: 50px;
+}
+
+.correctPercentageNode {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+}
+
+.wrongPercentageNode {
+  position: absolute;
+  top: 10%;
+  right: 20%;
 }
 
 .middle-box {
@@ -410,7 +424,6 @@ img {
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
-  fill-rule: nonzero;
   stroke: currentColor;
 }
 
