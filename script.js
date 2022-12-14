@@ -34,11 +34,11 @@ function renderQuestion() {
         timeLimit = question.time;
         timePassed = 0;
         timeLeft = timeLimit;
+        inner.innerHTML = "";
+        let baseTimer = document.createElement("div");
+        baseTimer.classList.add("base-timer");
+        inner.appendChild(baseTimer);
         renderTimer();
-
-/*         let timer = document.createElement("div");
-        timer.classList.add("base-timer");
-        inner.appendChild(timer); */
         
         let h3 = document.createElement("h3");
         h3.innerText = question.question + points;
@@ -393,7 +393,27 @@ const COLOR_CODES = { // clean this up to match our task
 let remainingPathColor = COLOR_CODES.info.color;
 
 function renderTimer() {
-    let inner = document.querySelector(".inner");
+    let baseTimer = document.querySelector(".base-timer");
+    baseTimer.innerHTML = `<svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <g class="base-timer__circle">
+    <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45"></circle>
+    <path
+    id="base-timer-path-remaining"
+    stroke-dasharray="283"
+    class="base-timer__path-remaining ${remainingPathColor}"
+    d="
+    M 50, 50
+    m -45, 0
+    a 45,45 0 1,0 90,0
+    a 45,45 0 1,0 -90,0
+    "
+    ></path>
+    </g>
+    </svg>
+    <span id="base-timer-label" class="base-timer__label">${timeLeft}</span>
+    `;
+    
+/*     let inner = document.querySelector(".inner");
     inner.innerHTML =        `<div class="base-timer">
     <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <g class="base-timer__circle">
@@ -413,22 +433,8 @@ function renderTimer() {
     </svg>
     <span id="base-timer-label" class="base-timer__label">${timeLeft}</span>
   </div>
-  `;
+  `; */
 }
-
-/* function startTimer() {
-    timerInterval = setInterval(() => {
-        timePassed = timePassed += 1;
-        timeLeft = timeLimit - timePassed;
-        document.getElementById("base-timer-label").innerText = timeLeft;
-        setCircleDasharray();
-        setRingColor(); // this is fine
-
-        if (timeLeft === 0) {
-            onTimesUp();
-        }
-    }, 1000);
-} */
 
 function onTimesUp() {
     clearInterval(timerInterval);
