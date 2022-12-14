@@ -277,6 +277,44 @@ function renderWelcome() {
     inner.appendChild(checkbar);
 }
 
+function renderFeedback() {
+    let inner = document.querySelector('.inner');
+    inner.innerHTML = "";
+
+    let h1 = document.createElement("h1");
+    h1.innerText = "Tell us how it's going";
+    inner.appendChild(h1);
+
+    let p = document.createElement("p");
+    p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
+    inner.appendChild(p);
+
+
+    let stars = document.createElement("div")
+    stars.id = "stars";
+    inner.appendChild(stars);
+    renderStars();
+
+
+
+    let commentBoxContainer = document.createElement("div");
+    commentBoxContainer.classList.add("comment-box"); 
+
+    let p1 = document.createElement("p");
+    p1.innerText = "Leave us an open feedback about your experience so far";
+    inner.appendChild(p1);
+
+    let commentBox = document.createElement("input");
+    commentBox.type = "text";
+    commentBox.placeholder = "Write your comment here";
+    inner.appendChild(commentBox);
+
+    let infoButton = document.createElement('button');
+    infoButton.classList.add('info-btn');
+    infoButton.innerText ='MORE INFO';
+  inner.appendChild(infoButton);
+}
+
 function renderStars() {
     let stars = document.getElementById("stars");
     for (let i = 1; i <= 10; i++) {
