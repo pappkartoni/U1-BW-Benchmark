@@ -165,7 +165,6 @@ function checkAnswer() {
     let selected = document.querySelector(".selected");
 
     if(!timeout) {
-        let selected = document.querySelector(".selected");
         if (selected !== null) {
             let answer = selected ? selected.innerText : null;
             let correctOne = questions[qNumber].correct;
@@ -183,7 +182,7 @@ function checkAnswer() {
     }
 }
 
-function selectAnswer(event) { // TODO
+function selectAnswer(event) {
     selectedAnswer = event.target.innerText;
     let buttons = document.getElementsByClassName("answer-btn");
     for (let b of buttons) {
