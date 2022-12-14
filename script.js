@@ -69,32 +69,45 @@ function renderQuestion() {
             btn.addEventListener("click", selectAnswer);
             buttonContainer.appendChild(btn);
         }
-        qNumber++;
+
+        let nextButton = document.createElement("button");
+        nextButton.classList.add("info-btn");
+        nextButton.innerText = "NEXT QUESTION";
+        nextButton.onclick = checkAnswer;
+        inner.appendChild(nextButton);
 } 
 
 function checkAnswer() {
-    let answer = selectedAnswer;
-    let correctOne = questions[qNumber].correct;
-    if (answer === correctOne) {
-        points++
-    }
-    if (qNumber >= questions.length) {
-        renderResult();
-    } else {
-        renderQuestion()
+    let selected = document.querySelector(".selected");
+    let timeout = false;
+    if (selected !== null || timeout) {
+        let answer = selected.innerText;
+        let correctOne = questions[qNumber].correct;
+        if (answer === correctOne) {
+            points++
+        }
+        if (qNumber >= questions.length) {
+            renderResult();
+        } else {
+            qNumber++;
+            renderQuestion();
+        }
     }
 }
 
 function selectAnswer(event) { // TODO
     selectedAnswer = event.target.innerText;
-    event.target.classList.toggle("selected");
-    event.target.classList.toggle("unselected");
+    let buttons = document.getElementsByClassName("answer-btn");
+    for (let b of buttons) {
+        b.classList.remove("selected");
+    }
+    event.target.classList.add("selected");
 }
 
 function startBenchmark() {
     let check = document.getElementById("check");
         if (check.checked) {
-            document.querySelector("inner").classList.remove("flt-left");
+            document.querySelector(".inner").classList.remove("flt-left");
             renderQuestion();
         } else {
             alert("Please promise us to be honest, honey!")
