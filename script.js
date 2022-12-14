@@ -93,7 +93,7 @@ function checkAnswer() {
         if (answer === correctOne) {
             points++
         }
-        if (qNumber >= questions.length) {
+        if (qNumber >= questions.length - 1) {
             renderResult();
         } else {
             qNumber++;
