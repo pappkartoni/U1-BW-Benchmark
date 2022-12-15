@@ -75,6 +75,7 @@ span {
   max-height: 60%;
   margin-inline: auto;
 /*   transform: translate(-50%, -40%); */
+
 }
 .inner div {
   margin: 30px 0;
@@ -95,7 +96,7 @@ span {
 }
 .inner button {
   border: 0;
-  font-size: 20px;
+  font-size: 16px;
   padding: 14px 28px;
   font-weight: bold;
 }
@@ -170,7 +171,6 @@ span {
 }
 .answer-btn:hover {
   background-color: #d20094;
-  box-shadow: 0 0 16px 1px #d20094;
   cursor: pointer;
 }
 
@@ -488,6 +488,7 @@ span {
   padding: 0 0%;
   margin-top: 150px;
   margin: 5vh 5.5vw;
+
 }
 
 h3 {
