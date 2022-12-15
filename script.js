@@ -212,13 +212,14 @@ function renderResult(){
     headerdiv.classList.add("header");
     inner.appendChild(headerdiv)
 
-    let resultText = document.createElement("h2")
+    let resultText = document.createElement("h3")
     resultText.innerText = "Results"
     resultText.classList.add("result")
     headerdiv.appendChild(resultText)
     
-    let summary = document.createElement("h3")
+    let summary = document.createElement("p")
     summary.innerText = "The summary of your answers:"
+    summary.classList.add("summary-of-answer")
     headerdiv.appendChild(summary)
 
 // creating middle box
@@ -249,6 +250,7 @@ function renderResult(){
 
     let correctPercentage = document.createElement("div")
     correctPercentage.innerText = `${percentageRight} %`
+    correctPercentage.classList.add("percentage")
     correctPercentageNode.appendChild(correctPercentage)
 
     let questionsCorrect = document.createElement("div")
@@ -270,18 +272,47 @@ function renderResult(){
 
     let statement = document.createElement("div")
     statement.classList.add("resultStatement")
-    resultBody.appendChild(statement)
+    pieChartDiv.appendChild(statement)
 
     let resultStatementNode = document.querySelector(".resultStatement")
     let resultStatement = document.createElement("p")
     resultStatement.innerText = ""
     resultStatementNode.appendChild(resultStatement)
- 
+    // passBox
+    let passedText = document.createElement ("div")
+    let congratz = document.createElement ("p")
+    congratz.innerText = "Congratulations!"
+    congratz.classList.add("congratz-statement")
+
+    let passedExam = document.createElement ("p")
+    passedExam.innerText = "You passed the exam!!"
+    passedExam.classList.add("passedExamStatement")
+
+    let sendCert = document.createElement ("p")
+    sendCert.innerText = "We'll send you a certificate \n in a few minutes.\n Check your email (including promotions and spam folder)"
+    sendCert.classList.add("sendCert-Statement")
+
+    passedText.appendChild(congratz)
+    passedText.appendChild(passedExam)
+    passedText.appendChild(sendCert)
+
+    //failBox
+    let failText = document.createElement ("div")
+    let ohNo = document.createElement ("p")
+    ohNo.innerText = "Oh no!"
+    ohNo.classList.add("ohNo-Statement")
+
+    let failedExam = document.createElement ("p")
+    failedExam.innerText = "Unfortunately you didn't pass this one."
+    failedExam.classList.add("failedExam-Statement")
+
+    failText.appendChild(ohNo)
+    failText.appendChild(failedExam)
 
     if (percentageRight >= 60) {
-        resultStatement.innerText = "Congratulations! You passed the exam! We'll send you a certificate in a few minutes. Check your email (including promotions and spam folder)"
+        resultStatement.appendChild(passedText)
     } else {
-        resultStatement.innerText = "Oh no! Unfortunately you didn't pass this one."
+        resultStatement.appendChild(failText)
     }
 
 // wrong div
@@ -299,6 +330,7 @@ function renderResult(){
  
     let wrongPercentage = document.createElement("div")
     wrongPercentage.innerText = `${percentageWrong} %`
+    wrongPercentage.classList.add("percentage")
     wrongPercentageNode.appendChild(wrongPercentage)
    
     let questionsWrong = document.createElement("div")
@@ -312,7 +344,8 @@ function renderResult(){
     inner.appendChild(btnDiv)
 
     let rateUsBtn = document.createElement("button")
-    rateUsBtn.classList.add("rate-us-btn");
+    // rateUsBtn.classList.add("rate-us-btn");
+    rateUsBtn.setAttribute("id","rate-us-btn")
     rateUsBtn.innerText = ("RATE US")
     btnDiv.appendChild(rateUsBtn)
     rateUsBtn.onclick = function() {
