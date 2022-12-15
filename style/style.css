@@ -195,7 +195,7 @@ span {
 .pie-chart {
   --p:20;
   --b:40px;
-  --c:#c2128d;
+  --c:#d20094;
   --w:300px;
   width: var(--w);
   aspect-ratio: 1;
