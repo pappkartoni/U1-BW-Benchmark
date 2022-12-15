@@ -146,11 +146,14 @@ function renderQuestion() {
         buttonContainer.appendChild(btn);
     }
 
+    let nextBox = document.createElement("div");
+    nextBox.classList.add("next-box");
+    inner.appendChild(nextBox);
     let nextButton = document.createElement("button");
     nextButton.classList.add("info-btn");
     nextButton.innerText = "NEXT QUESTION";
     nextButton.onclick = checkAnswer;
-    inner.appendChild(nextButton);
+    nextBox.appendChild(nextButton);
 
     let footer = document.createElement("div");
     footer.classList.add("qtn-footer");
@@ -208,19 +211,19 @@ function renderResult(){
     inner.innerHTML = "";
 
 // creating header 
-    let headerdiv = document.createElement("div");
+/*     let headerdiv = document.createElement("div");
     headerdiv.classList.add("header");
-    inner.appendChild(headerdiv)
+    // inner.appendChild(headerdiv) */
 
     let resultText = document.createElement("h3")
     resultText.innerText = "Results"
     resultText.classList.add("result")
-    headerdiv.appendChild(resultText)
+    inner.appendChild(resultText)
     
     let summary = document.createElement("p")
     summary.innerText = "The summary of your answers:"
     summary.classList.add("summary-of-answer")
-    headerdiv.appendChild(summary)
+    inner.appendChild(summary)
 
 // creating middle box
     let middlebox = document.createElement("div")

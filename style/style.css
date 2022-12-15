@@ -10,6 +10,7 @@ body {
 h1 {
   font-size: 60px;
   font-family: "Outfit", Arial, Helvetica, sans-serif;
+  margin-top: 0;
   margin-bottom: 10px;
   line-height: 60px;
   font-weight: 400;
@@ -56,7 +57,7 @@ span {
   padding-top: 3rem;
 }
 .logo img {
-  width: 180px;
+  width: 150px;
   position: absolute;
   left: 10%;
 }
@@ -67,21 +68,25 @@ span {
 
 .inner {
   padding: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
+  top: 20%;
+/*   left: 50%; */
+  width: 80%; 
+  max-height: 60%;
+  margin-inline: auto;
+/*   transform: translate(-50%, -40%); */
 }
 .inner div {
   margin: 30px 0;
 }
 .inner input[type=text] {
-  width: 90%;
+  width: 50%;
   border: none;
+  display: block;
   border-bottom: 1px solid #d20094;
   background: none;
   padding: 10px;
-  margin: 25px 0;
+  margin: 3rem auto;
   font-size: 20px;
   color: white;
 }
@@ -115,6 +120,7 @@ span {
 
 .flt-left {
   text-align: left;
+  width: 70%;
 }
 
 .inl {
@@ -154,8 +160,8 @@ span {
 
 .answer-btn {
   width: 40%;
-  margin: 2%;
-  height: 55px;
+  margin: 1% 0;
+  height: 4rem;
   font-size: 16px;
   background-color: rgba(11, 17, 59, 0.5019607843);
   border-radius: 500px;
@@ -294,14 +300,12 @@ span {
 }
 
 .result {
-  color: whitesmoke;
   padding-bottom: 0px;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 #correctPercentage, #wrongPercentage {
-  color: whitesmoke;
   padding-top: 0;
   font-size: 50px;
 }
@@ -367,6 +371,7 @@ span {
 .resultbody {
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
   min-width: 80vw;
 }
@@ -414,10 +419,10 @@ span {
 }
 
 .base-timer {
-  position: relative;
+  position: absolute;
   height: 150px;
   width: 150px;
-  left: 66%;
+  right: 10%;
 }
 
 /* Removes SVG styling that would hide the time label */
@@ -474,4 +479,22 @@ span {
 
 .base-timer__path-remaining.pink {
   color: #d20094;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.inner .next-box {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 0 0%;
+  margin-top: 150px;
+  margin: 5vh 5.5vw;
+}
+
+h3 {
+  max-width: 90%;
+  margin-inline: auto;
+  margin-top: 0;
+}
+.inner div .qtn-footer {
+  margin-top: 10%;
+}
