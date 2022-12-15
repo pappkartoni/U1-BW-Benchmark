@@ -27,7 +27,7 @@ h3 {
 }
 
 .container {
-  height: 100vh;
+  height: 96.7vh;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-position: center;
@@ -177,10 +177,7 @@ img {
   background-color: #900080;
 }
 
-.middle-box {
-  position: relative;
-}
-
+/* result page */
 .pie-chart {
   --p:20;
   --b:40px;
@@ -225,49 +222,54 @@ img {
 }
 
 .resultStatement {
-  width: 150px;
+  width: 200px;
   height: 10px;
   font-size: 12px;
   z-index: 0;
   position: absolute;
-  top: 25%;
-  left: 45%;
+  top: 13%;
+  left: 17%;
   font-size: 14px;
   color: whitesmoke;
 }
 
-.checkbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.checkbar div {
-  line-height: 2.5rem;
-}
-
-.checkbar label {
+.congratz-statement{
+  margin-bottom: 0;
+  font-weight: bold;
   font-size: 16px;
 }
 
-.checkbar input[type=checkbox] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  vertical-align: bottom;
-  position: relative;
-  top: -9px;
-  border: 2px solid white;
-  border-radius: 0;
-  width: 16px;
-  height: 16px;
+.passedExamStatement{
+  margin-top: 0;
+  color: #00FFFF;
+  font-weight: bold;
+  font-size: 16px;
 }
 
-.checkbar input[type=checkbox]:checked {
-  background: #00FFFF;
+.sendCert-Statement{
+  font-weight: normal;
+  font-size: 12px;
+  filter: opacity(0.8);
 }
 
-.rate-us-btn {
+.ohNo-Statement{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.failedExam-Statement {
+  font-weight: normal;
+  font-size: 12px;
+  filter: opacity(0.8);
+}
+
+.summary-of-answer{
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: normal;
+}
+
+#rate-us-btn {
   background-color: Transparent;
   border: white solid;
   color: white;
@@ -277,50 +279,38 @@ img {
   font-size: 20px;
 }
 
-.rate-us-btn:hover {
+#rate-us-btn:hover {
   box-shadow: 0 0 16px 1px white;
   cursor: pointer;
 }
 
 .result {
   color: whitesmoke;
-  font-size: 50px;
   padding-bottom: 0px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 #correctPercentage, #wrongPercentage {
   color: whitesmoke;
   padding-top: 0;
-}
-
-.header h3 {
-  margin-top: 0;
-}
-
-.questionsWrong, .questionsCorrect {
-  font-size: 15px;
-  filter: opacity(50%);
-}
-
-.correctPercentageNode, .wrongPercentageNode {
   font-size: 50px;
 }
 
-.correctPercentageNode {
-  position: absolute;
-  top: 10%;
-  left: 20%;
+#correctPercentage div, #wrongPercentage div {
+  margin: 0px
 }
 
-.wrongPercentageNode {
-  position: absolute;
-  top: 10%;
-  right: 20%;
+
+.questionsWrong, .questionsCorrect {
+  font-size: 15px;
+  filter: opacity(80%);
 }
 
-.middle-box {
-  position: relative;
+.percentage {
+  font-weight: bold;
 }
+
 
 .pie-chart {
   --p:20;
@@ -365,15 +355,44 @@ img {
   border-radius: 50%;
 }
 
-.congrat {
-  width: 150px;
-  height: 10px;
-  font-size: 12px;
-  z-index: 0;
-  position: absolute;
-  top: 25%;
-  left: 43%;
+.resultbody {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-width: 80vw;
 }
+
+.checkbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.checkbar div {
+  line-height: 2.5rem;
+}
+
+.checkbar label {
+  font-size: 16px;
+}
+
+.checkbar input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: bottom;
+  position: relative;
+  top: -9px;
+  border: 2px solid white;
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+}
+
+.checkbar input[type=checkbox]:checked {
+  background: #00FFFF;
+}
+/* Result Page Ends */
 
 .btn-container {
   display: flex;
