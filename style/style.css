@@ -241,7 +241,7 @@ span {
   font-size: 12px;
   z-index: 0;
   position: absolute;
-  top: 13%;
+  top: 7%;
   left: 17%;
   font-size: 14px;
   color: whitesmoke;
@@ -269,6 +269,7 @@ span {
 .ohNo-Statement{
   font-weight: bold;
   font-size: 16px;
+  color: #ed20af;
 }
 
 .failedExam-Statement {
