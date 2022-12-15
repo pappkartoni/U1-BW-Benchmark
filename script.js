@@ -536,7 +536,7 @@ function onTimesUp() {
     for (let b of buttons) {
         b.disabled = true; // no hover as well?
     }
-    checkAnswer();
+    //checkAnswer();
   }
 
   function startTimer() {

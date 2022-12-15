@@ -4,6 +4,7 @@ body {
   margin: 0;
   color: white;
   font-size: 16px;
+  position: absolute;
 }
 
 h1 {
@@ -30,11 +31,11 @@ h3 {
 
 .container {
   height: 100vh;
+  width: 100vw;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-position: center;
   margin: 0;
-  padding: 16px;
   position: relative;
 }
 
@@ -50,18 +51,14 @@ span {
   font-weight: bold;
 }
 
-img {
-  width: 180px;
-}
-
 .logo {
   text-align: left;
-  margin-top: 32px;
-  margin-left: 96px;
+  padding-top: 3rem;
 }
 .logo img {
-  width: 150px;
+  width: 180px;
   position: absolute;
+  left: 10%;
 }
 
 .star-active path {
@@ -135,7 +132,8 @@ img {
 .checkbar label {
   font-size: 16px;
   margin-left: 10px;
-  cursor: pointer;  
+  cursor: pointer;
+  
 }
 .checkbar input[type=checkbox] {
   -webkit-appearance: none;
