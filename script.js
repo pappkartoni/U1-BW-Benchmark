@@ -1,18 +1,44 @@
 const questions1 = [
     {
-        question: "If you type the following code in the console window, what result will you get? 3 > 2 > 1 === false;",
-        correct: "True",
-        incorrects: ["False"],
-        type: "multiple",
-        time: 10
+        question: "Which built-in method removes the last element from an array and returns that element?",
+        correct: "pop()",
+        incorrects: ["last()", "get()", "None of the above"],
+        time: 30
     },
     
     { 
-        question: "JavaScript is a ___ -side programming language.",
-        correct: "Both",
-        incorrects: ["Client", "Sever", "None"],
-        type: "multiple",
-        time: 20
+        question: "Which of the following methods can be used to display data in some form using Javascript?",
+        correct: "All of the above",
+        incorrects: ["document.write()", "console.log()", "window.alert()"],
+        time: 30
+    },
+
+    { 
+        question: "Which tag do we use in HTML for inserting a line-break?",
+        correct: "<br>",
+        incorrects: ["<pre>", "<b>", "<a>"],
+        time: 30
+    },
+
+    { 
+        question: "Which property sets the actual amount of spacing between the various letters?",
+        correct: "letter-spacing",
+        incorrects: ["letter-space", "space", "line-height"],
+        time: 30
+    },
+
+    { 
+        question: "Look at the snippets given below and check the one in which the variable “a” isn’t equal to “NULL”.",
+        correct: "if(a!==null)",
+        incorrects: ["if (a!)", "if(a!=null)", "if(a!null)"],
+        time: 60
+    },
+
+    { 
+        question: "Which tag is used in HTML5 for the initialization of the document type?",
+        correct: "<!DOCTYPE html>",
+        incorrects: ["<Doctype>", "<Doctype HTML>", "<\Doctype html>"],
+        time: 30
     },
 ];
 const doomquiz = [
