@@ -309,7 +309,15 @@ span {
 
 #correctPercentage, #wrongPercentage {
   padding-top: 0;
-  font-size: 50px;
+  font-size: 45px;
+  width: 200px;
+}
+#correctPercentage {
+  text-align: left;
+}
+
+#wrongPercentage {
+  text-align: right;
 }
 
 #correctPercentage div, #wrongPercentage div {

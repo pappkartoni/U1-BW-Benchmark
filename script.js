@@ -332,7 +332,7 @@ function renderResult(){
     wrongPercentageNode.innerText = "Wrong"
  
     let wrongPercentage = document.createElement("div")
-    wrongPercentage.innerText = `${percentageWrong} %`
+    wrongPercentage.innerText = `${percentageWrong}%`
     wrongPercentage.classList.add("percentage")
     wrongPercentageNode.appendChild(wrongPercentage)
    
