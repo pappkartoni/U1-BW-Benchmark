@@ -107,6 +107,7 @@ img {
 }
 .inner ul li {
   white-space: nowrap;
+  padding: 4px;
 }
 
 #stars div {
@@ -131,6 +132,7 @@ img {
 }
 .checkbar label {
   font-size: 16px;
+  padding-left: 7px;
 }
 .checkbar input[type=checkbox] {
   -webkit-appearance: none;
