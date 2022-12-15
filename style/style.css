@@ -24,6 +24,7 @@ h1 span {
 h2 {
   margin-bottom: 5px;
   color: #d20094;
+  font-family: "Outfit", Arial, Helvetica, sans-serif;
 }
 
 h3 {
@@ -205,7 +206,6 @@ span {
   place-content: center;
   font-size: 25px;
   font-weight: bold;
-  font-family: sans-serif;
 }
 
 .pie-chart:before,
@@ -338,7 +338,7 @@ span {
 .pie-chart {
   --p:20;
   --b:40px;
-  --c:#c2128d;
+  --c:#d20094;
   --w:300px;
   width: var(--w);
   aspect-ratio: 1;
@@ -348,7 +348,6 @@ span {
   place-content: center;
   font-size: 25px;
   font-weight: bold;
-  font-family: sans-serif;
 }
 
 .pie-chart:before,
