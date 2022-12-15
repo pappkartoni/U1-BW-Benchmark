@@ -4,6 +4,7 @@ body {
   margin: 0;
   color: white;
   font-size: 16px;
+  position: absolute;
 }
 
 h1 {
@@ -11,10 +12,12 @@ h1 {
   font-family: "Outfit", Arial, Helvetica, sans-serif;
   margin-bottom: 10px;
   line-height: 60px;
+  font-weight: 400;
 }
 h1 span {
   display: block;
   margin: 0;
+  font-weight: 600;
 }
 
 h2 {
@@ -23,16 +26,16 @@ h2 {
 }
 
 h3 {
-  font-size: 50px;
+  font-size: 45px;
 }
 
 .container {
-  height: 96.7vh;
+  height: 100vh;
+  width: 100vw;
   background-image: url("../assets/bg.jpg");
   background-size: cover;
   background-position: center;
   margin: 0;
-  padding: 16px;
   position: relative;
 }
 
@@ -48,17 +51,14 @@ span {
   font-weight: bold;
 }
 
-img {
-  width: 180px;
-}
-
 .logo {
   text-align: left;
-  margin-left: 96px;
-  margin-top: 32px;
+  padding-top: 3rem;
 }
 .logo img {
-  width: 150px;
+  width: 180px;
+  position: absolute;
+  left: 10%;
 }
 
 .star-active path {
@@ -131,6 +131,9 @@ img {
 }
 .checkbar label {
   font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+  
 }
 .checkbar input[type=checkbox] {
   -webkit-appearance: none;
@@ -143,6 +146,7 @@ img {
   border-radius: 0;
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 .checkbar input[type=checkbox]:checked {
   background: #00FFFF;
@@ -160,6 +164,8 @@ img {
 }
 .answer-btn:hover {
   background-color: #d20094;
+  box-shadow: 0 0 16px 1px #d20094;
+  cursor: pointer;
 }
 
 .unselected {
@@ -267,6 +273,9 @@ img {
   margin-top: 0;
   font-size: 20px;
   font-weight: normal;
+}
+.checkbar input[type=checkbox]:checked {
+  background: #00FFFF;
 }
 
 #rate-us-btn {
@@ -408,7 +417,7 @@ img {
   position: relative;
   height: 150px;
   width: 150px;
-  left: 90%;
+  left: 66%;
 }
 
 /* Removes SVG styling that would hide the time label */
@@ -419,15 +428,15 @@ img {
 
 /* The SVG path that displays the timer's progress */
 .base-timer__path-elapsed {
-  stroke-width: 7px;
+  stroke-width: 10px;
   stroke: grey;
 }
 
 .base-timer__label {
   position: absolute;
   /* Size should match the parent container */
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   /* Keep the label aligned to the top */
   top: 0;
   /* Create a flexible box that centers content vertically and horizontally */
@@ -435,11 +444,19 @@ img {
   align-items: center;
   justify-content: center;
   /* Sort of an arbitrary number; adjust to your liking */
-  font-size: 16px;
+  font-size: 8px;
+  flex-direction: column;
+}
+.base-timer__label p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.base-timer__label #time-field {
+  font-size: 40px;
 }
 
 .base-timer__path-remaining {
-  stroke-width: 7px;
+  stroke-width: 10px;
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;

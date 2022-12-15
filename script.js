@@ -111,53 +111,53 @@ let timeLeft = 0;
 let questions = questions1;
 
 function renderQuestion() {
-        let question = questions[qNumber];        
-        let inner = document.querySelector('.inner');
-        selectedAnswer = null;
-        timeout = false;
-        timeLimit = question.time;
-        timePassed = 0;
-        timeLeft = timeLimit;
-        inner.innerHTML = "";
-        let baseTimer = document.createElement("div");
-        baseTimer.classList.add("base-timer");
-        inner.appendChild(baseTimer);
-        renderTimer();
-        
-        let h3 = document.createElement("h3");
-        h3.innerText = question.question;
-        inner.appendChild(h3);
-        
-        let buttonContainer = document.createElement("div");
-        buttonContainer.classList.add("btn-container");
-        inner.appendChild(buttonContainer);
+    let question = questions[qNumber];        
+    let inner = document.querySelector('.inner');
+    selectedAnswer = null;
+    timeout = false;
+    timeLimit = question.time;
+    timePassed = 0;
+    timeLeft = timeLimit;
+    inner.innerHTML = "";
+    let baseTimer = document.createElement("div");
+    baseTimer.classList.add("base-timer");
+    // inner.appendChild(baseTimer);
+    document.querySelector(".logo").appendChild(baseTimer);
+    renderTimer();
+    
+    let h3 = document.createElement("h3");
+    h3.innerText = question.question;
+    inner.appendChild(h3);
+    
+    let buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("btn-container");
+    inner.appendChild(buttonContainer);
 
-        let answers = shuffleArray([question.correct].concat(question.incorrects));
+    let answers = shuffleArray([question.correct].concat(question.incorrects));
 
-        for (let i = 0; i < answers.length; i++) {
-            let answer = answers[i];
-            let btn = document.createElement("button");
+    for (let i = 0; i < answers.length; i++) {
+        let answer = answers[i];
+        let btn = document.createElement("button");
 
-            btn.classList.add("answer-btn", "unselected");
-            btn.setAttribute("id", i);
-            btn.innerText = answer;
-            btn.addEventListener("click", selectAnswer);
-            buttonContainer.appendChild(btn);
-        }
+        btn.classList.add("answer-btn", "unselected");
+        btn.setAttribute("id", i);
+        btn.innerText = answer;
+        btn.addEventListener("click", selectAnswer);
+        buttonContainer.appendChild(btn);
+    }
 
-        let nextButton = document.createElement("button");
-        nextButton.classList.add("info-btn");
-        nextButton.innerText = "NEXT QUESTION";
-        nextButton.onclick = checkAnswer;
-        inner.appendChild(nextButton);
+    let nextButton = document.createElement("button");
+    nextButton.classList.add("info-btn");
+    nextButton.innerText = "NEXT QUESTION";
+    nextButton.onclick = checkAnswer;
+    inner.appendChild(nextButton);
 
-        let footer = document.createElement("div");
-        footer.classList.add("qtn-footer");
-        footer.innerHTML = `QUESTION ${qNumber+1}<span> / ${questions.length}</span>`
-        inner.appendChild(footer);
+    let footer = document.createElement("div");
+    footer.classList.add("qtn-footer");
+    footer.innerHTML = `QUESTION ${qNumber+1}<span> / ${questions.length}</span>`
+    inner.appendChild(footer);
 
-        startTimer();
-
+    startTimer();
 } 
 
 function checkAnswer() {
@@ -174,6 +174,7 @@ function checkAnswer() {
         }
     }
     if (qNumber >= questions.length - 1) {
+        document.querySelector(".base-timer").remove();
         renderResult();
     } else {
         qNumber++;
@@ -193,13 +194,13 @@ function selectAnswer(event) {
 
 function startBenchmark() {
     let check = document.getElementById("check");
-        if (check.checked) {
-            document.querySelector(".inner").classList.remove("flt-left");
-            renderQuestion();
-        } else {
-            alert("Please promise us to be honest, honey!")
-        }
+    if (check.checked) {
+        document.querySelector(".inner").classList.remove("flt-left");
+        renderQuestion();
+    } else {
+        alert("Please promise us to be honest, honey!")
     }
+}
 
 //RESULT PAGE
 function renderResult(){
@@ -396,6 +397,7 @@ function renderWelcome() {
     ctr1.appendChild(checkbox);
     let label = document.createElement("label");
     label.innerText = "I promise to answer myself without help from anyone";
+    label.htmlFor = "check";
     ctr1.appendChild(label);
     checkbar.appendChild(ctr1);
     let ctr2 = document.createElement("div");
@@ -532,7 +534,9 @@ function renderTimer() {
     ></path>
     </g>
     </svg>
-    <span id="base-timer-label" class="base-timer__label">${timeLeft}</span>
+    <div id="base-timer-label" class="base-timer__label">
+        <p>SECONDS</p><p id="time-field">${timeLeft}<p><p>REMAINING</p>
+    </div>
     `;
     
 /*     let inner = document.querySelector(".inner");
@@ -565,14 +569,14 @@ function onTimesUp() {
     for (let b of buttons) {
         b.disabled = true; // no hover as well?
     }
-    checkAnswer();
+    //checkAnswer();
   }
 
   function startTimer() {
     timerInterval = setInterval(() => {
       timePassed = timePassed += 1;
       timeLeft = timeLimit - timePassed;
-      document.getElementById("base-timer-label").innerHTML = timeLeft;
+      document.getElementById("time-field").innerHTML = timeLeft;
       setCircleDasharray();
       setRingColor(timeLeft);
 
