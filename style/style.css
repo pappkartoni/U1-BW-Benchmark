@@ -11,10 +11,12 @@ h1 {
   font-family: "Outfit", Arial, Helvetica, sans-serif;
   margin-bottom: 10px;
   line-height: 60px;
+  font-weight: 400;
 }
 h1 span {
   display: block;
   margin: 0;
+  font-weight: 600;
 }
 
 h2 {
@@ -23,7 +25,7 @@ h2 {
 }
 
 h3 {
-  font-size: 50px;
+  font-size: 45px;
 }
 
 .container {
@@ -54,11 +56,12 @@ img {
 
 .logo {
   text-align: left;
-  margin-left: 96px;
   margin-top: 32px;
+  margin-left: 96px;
 }
 .logo img {
   width: 150px;
+  position: absolute;
 }
 
 .star-active path {
@@ -131,6 +134,8 @@ img {
 }
 .checkbar label {
   font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;  
 }
 .checkbar input[type=checkbox] {
   -webkit-appearance: none;
@@ -143,6 +148,7 @@ img {
   border-radius: 0;
   width: 16px;
   height: 16px;
+  cursor: pointer;
 }
 .checkbar input[type=checkbox]:checked {
   background: #00FFFF;
@@ -160,6 +166,8 @@ img {
 }
 .answer-btn:hover {
   background-color: #d20094;
+  box-shadow: 0 0 16px 1px #d20094;
+  cursor: pointer;
 }
 
 .unselected {
@@ -244,23 +252,6 @@ img {
 
 .checkbar div {
   line-height: 2.5rem;
-}
-
-.checkbar label {
-  font-size: 16px;
-}
-
-.checkbar input[type=checkbox] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  vertical-align: bottom;
-  position: relative;
-  top: -9px;
-  border: 2px solid white;
-  border-radius: 0;
-  width: 16px;
-  height: 16px;
 }
 
 .checkbar input[type=checkbox]:checked {
@@ -389,7 +380,7 @@ img {
   position: relative;
   height: 150px;
   width: 150px;
-  left: 90%;
+  left: 66%;
 }
 
 /* Removes SVG styling that would hide the time label */
@@ -400,15 +391,15 @@ img {
 
 /* The SVG path that displays the timer's progress */
 .base-timer__path-elapsed {
-  stroke-width: 7px;
+  stroke-width: 10px;
   stroke: grey;
 }
 
 .base-timer__label {
   position: absolute;
   /* Size should match the parent container */
-  width: 150px;
-  height: 150px;
+  width: 100%;
+  height: 100%;
   /* Keep the label aligned to the top */
   top: 0;
   /* Create a flexible box that centers content vertically and horizontally */
@@ -416,11 +407,19 @@ img {
   align-items: center;
   justify-content: center;
   /* Sort of an arbitrary number; adjust to your liking */
-  font-size: 16px;
+  font-size: 8px;
+  flex-direction: column;
+}
+.base-timer__label p {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.base-timer__label #time-field {
+  font-size: 40px;
 }
 
 .base-timer__path-remaining {
-  stroke-width: 7px;
+  stroke-width: 10px;
   transform: rotate(90deg);
   transform-origin: center;
   transition: 1s linear all;
