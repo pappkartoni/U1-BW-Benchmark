@@ -69,10 +69,10 @@ span {
 .inner {
   padding: 10px;
   position: relative;
-  top: 20%;
+  top: 25%;
 /*   left: 50%; */
   width: 80%; 
-  max-height: 60%;
+  max-height: 50%;
   margin-inline: auto;
 /*   transform: translate(-50%, -40%); */
 
