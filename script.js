@@ -146,11 +146,14 @@ function renderQuestion() {
         buttonContainer.appendChild(btn);
     }
 
+    let nextBox = document.createElement("div");
+    nextBox.classList.add("next-box");
+    inner.appendChild(nextBox);
     let nextButton = document.createElement("button");
     nextButton.classList.add("info-btn");
     nextButton.innerText = "NEXT QUESTION";
     nextButton.onclick = checkAnswer;
-    inner.appendChild(nextButton);
+    nextBox.appendChild(nextButton);
 
     let footer = document.createElement("div");
     footer.classList.add("qtn-footer");
