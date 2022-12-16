@@ -206,7 +206,7 @@ function renderResult(){
     correctPercentageNode.innerText = "Correct"
 
     let correctPercentage = document.createElement("div")
-    correctPercentage.innerText = `${percentageRight} %`
+    correctPercentage.innerText = `${percentageRight}%`
     correctPercentage.classList.add("percentage")
     correctPercentageNode.appendChild(correctPercentage)
 
