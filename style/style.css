@@ -137,9 +137,6 @@ span {
 .unselected {
   background-color: rgba(172, 172, 172, 0.1);
 }
-.selected {
-  background-color: #d20094;
-}
 .bg-clr-btn {
   background-color: #d20094;
 }
@@ -171,7 +168,9 @@ span {
 .qtn-footer span {
   color: #d20094;
 }
-
+.selected {
+  background-color: #d20094;
+}
 /* STARS */
 #stars {
   margin-bottom: 5rem;
