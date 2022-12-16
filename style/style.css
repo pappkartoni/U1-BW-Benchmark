@@ -6,32 +6,7 @@ body {
   font-size: 16px;
   position: absolute;
 }
-h1 {
-  font-size: 60px;
-  font-family: "Outfit", Arial, Helvetica, sans-serif;
-  margin-top: 0;
-  margin-bottom: 10px;
-  line-height: 60px;
-  font-weight: 400;
-}
-h1 span {
-  display: block;
-  margin: 0;
-  font-weight: 600;
-}
 
-h2 {
-  margin-bottom: 5px;
-  color: #d20094;
-  font-family: "Outfit", Arial, Helvetica, sans-serif;
-}
-
-h3 {
-  font-size: 45px;
-  max-width: 90%;
-  margin-inline: auto;
-  margin-top: 0;
-}
 .container {
   height: 100vh;
   width: 100vw;
@@ -40,18 +15,6 @@ h3 {
   background-position: center;
   margin: 0;
   position: relative;
-}
-
-.accented {
-  color: #00FFFF;
-}
-
-.il-ctr {
-  display: inline-block;
-}
-
-span {
-  font-weight: bold;
 }
 
 .header {
@@ -64,10 +27,7 @@ span {
   left: 10%;
 }
 
-.star-active path {
-  fill: #00FFFF;
-}
-
+/* INNER */
 .inner {
   padding: 10px;
   top: 25%;
@@ -77,7 +37,6 @@ span {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -0%);
-/*   position: relative; */
 }
 .inner div {
   margin: 30px 0;
@@ -116,51 +75,79 @@ span {
 .inner ul li {
   white-space: nowrap;
 }
+.inner .next-box {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  padding: 0 0%;
+  margin-top: 150px;
+  margin: 5vh 5.5vw;
 
-#stars div {
-  margin: 0.5rem;
+}
+.inner div.qtn-footer {
+  margin-top: 10%;
 }
 
+/* HEADINGS & GENERAL CLASSES */
+h1 {
+  font-size: 60px;
+  font-family: "Outfit", Arial, Helvetica, sans-serif;
+  margin-top: 0;
+  margin-bottom: 10px;
+  line-height: 60px;
+  font-weight: 400;
+}
+h1 span {
+  display: block;
+  margin: 0;
+  font-weight: 600;
+}
+h2 {
+  margin-bottom: 5px;
+  color: #d20094;
+  font-family: "Outfit", Arial, Helvetica, sans-serif;
+}
+h3 {
+  font-size: 45px;
+  max-width: 90%;
+  margin-inline: auto;
+  margin-top: 0;
+}
+.accented {
+  color: #00FFFF;
+}
+.il-ctr {
+  display: inline-block;
+}
+.inl {
+  display: inline;
+}
+span {
+  font-weight: bold;
+}
+.fs-larger {
+  font-size: 24px;
+  max-width: 50%;
+  margin-inline: auto;
+}
 .flt-left {
   text-align: left;
   width: 70%;
 }
-
-.inl {
-  display: inline;
+.unselected {
+  background-color: rgba(172, 172, 172, 0.1);
+}
+.selected {
+  background-color: #d20094;
+}
+.bg-clr-btn {
+  background-color: #d20094;
+}
+.bg-clr-btn:active {
+  background-color: #900080;
 }
 
-.checkbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-.checkbar div {
-  line-height: 2.5rem;
-}
-.checkbar label {
-  font-size: 16px;
-  margin-left: 10px;
-  cursor: pointer;
-  
-}
-.checkbar input[type=checkbox] {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  vertical-align: bottom;
-  position: relative;
-  top: -9px;
-  border: 2px solid white;
-  border-radius: 0;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-}
-.checkbar input[type=checkbox]:checked {
-  background: #00FFFF;
-}
-
+/* BUTTONS */
 .answer-btn {
   width: 40%;
   margin: 1% 0;
@@ -176,24 +163,58 @@ span {
   background-color: #d20094;
   cursor: pointer;
 }
-
-.unselected {
-  /* background-color: rgba(55, 68, 173, 0.1);   */
-  background-color: rgba(172, 172, 172, 0.1);
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.qtn-footer span {
+  color: #d20094;
 }
 
-.selected {
-  background-color: #d20094;
+/* STARS */
+#stars {
+  margin-bottom: 5rem;
+}
+#stars div {
+  margin: 0.5rem;
+}
+.star-active path {
+  fill: #00FFFF;
 }
 
-.bg-clr-btn {
-  background-color: #d20094;
+/* CHECKBAR */
+.checkbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.bg-clr-btn:active {
-  background-color: #900080;
+.checkbar div {
+  line-height: 2.5rem;
+}
+.checkbar label {
+  font-size: 16px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.checkbar input[type=checkbox] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  vertical-align: bottom;
+  position: relative;
+  top: -9px;
+  border: 2px solid white;
+  border-radius: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+.checkbar input[type=checkbox]:checked {
+  background: #00FFFF;
 }
 
-/* result page */
+/* PIE CHART */
 .pie-chart {
   --p:20;
   --b:40px;
@@ -208,14 +229,12 @@ span {
   font-size: 25px;
   font-weight: bold;
 }
-
 .pie-chart:before,
 .pie-chart:after {
   content: "";
   position: absolute;
   border-radius: 50%;
 }
-
 .pie-chart:before {
   inset: 0;
   background: radial-gradient(farthest-side, var(--c) 98%, rgba(0, 0, 0, 0)) top/var(--b) var(--b) no-repeat, conic-gradient(var(--c) calc(var(--p) * 1%), rgb(0, 255, 255) 0);
@@ -223,19 +242,18 @@ span {
   mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(99% - var(--b)), #000 calc(100% - var(--b)));
   background-size: 0 0, auto;
 }
-
 .pie-chart:after {
   inset: calc(50% - var(--b) / 2);
   background: var(--c);
   transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
   content: none;
 }
-
 .pie-chart:hover {
   box-shadow: 0px 0px 20px rgb(0, 0, 0);
   border-radius: 50%;
 }
 
+/* RESULT PAGE */
 .resultStatement {
   width: 200px;
   height: 10px;
@@ -247,47 +265,37 @@ span {
   font-size: 14px;
   color: whitesmoke;
 }
-
 .congratz-statement{
   margin-bottom: 0;
   font-weight: bold;
   font-size: 16px;
 }
-
 .passedExamStatement{
   margin-top: 0;
   color: #00FFFF;
   font-weight: bold;
   font-size: 16px;
 }
-
 .sendCert-Statement{
   font-weight: normal;
   font-size: 12px;
   filter: opacity(0.8);
 }
-
 .ohNo-Statement{
   font-weight: bold;
   font-size: 16px;
   color: #ed20af;
 }
-
 .failedExam-Statement {
   font-weight: normal;
   font-size: 12px;
   filter: opacity(0.8);
 }
-
 .summary-of-answer{
   margin-top: 0;
   font-size: 20px;
   font-weight: normal;
 }
-.checkbar input[type=checkbox]:checked {
-  background: #00FFFF;
-}
-
 #rate-us-btn {
   background-color: Transparent;
   border: white solid;
@@ -297,18 +305,15 @@ span {
   height: 60px;
   font-size: 20px;
 }
-
 #rate-us-btn:hover {
   box-shadow: 0 0 16px 1px white;
   cursor: pointer;
 }
-
 .result {
   padding-bottom: 0px;
   margin-top: 0;
   margin-bottom: 0;
 }
-
 #correctPercentage, #wrongPercentage {
   padding-top: 0;
   font-size: 45px;
@@ -325,45 +330,13 @@ span {
 #correctPercentage div, #wrongPercentage div {
   margin: 0px
 }
-
-
 .questionsWrong, .questionsCorrect {
   font-size: 15px;
   filter: opacity(80%);
 }
-
 .percentage {
   font-weight: bold;
 }
-
-
-.pie-chart:before,
-.pie-chart:after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-}
-
-.pie-chart:before {
-  inset: 0;
-  background: radial-gradient(farthest-side, var(--c) 98%, rgba(0, 0, 0, 0)) top/var(--b) var(--b) no-repeat, conic-gradient(var(--c) calc(var(--p) * 1%), rgb(0, 255, 255) 0);
-  -webkit-mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  mask: radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(99% - var(--b)), #000 calc(100% - var(--b)));
-  background-size: 0 0, auto;
-}
-
-.pie-chart:after {
-  inset: calc(50% - var(--b) / 2);
-  background: var(--c);
-  transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
-  content: none;
-}
-
-.pie-chart:hover {
-  box-shadow: 0px 0px 20px rgb(0, 0, 0);
-  border-radius: 50%;
-}
-
 .resultbody {
   display: flex;
   justify-content: space-evenly;
@@ -372,79 +345,29 @@ span {
   min-width: 80vw;
 }
 
-.checkbar {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.checkbar div {
-  line-height: 2.5rem;
-}
-
-.checkbar label {
-  font-size: 16px;
-}
-
-.checkbar input[type=checkbox] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  vertical-align: bottom;
-  position: relative;
-  top: -9px;
-  border: 2px solid white;
-  border-radius: 0;
-  width: 16px;
-  height: 16px;
-}
-
-.checkbar input[type=checkbox]:checked {
-  background: #00FFFF;
-}
-/* Result Page Ends */
-
-.btn-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-.qtn-footer span {
-  color: #d20094;
-}
-
+/* TIMER */
 .base-timer {
   position: absolute;
   height: 150px;
   width: 150px;
   right: 10%;
 }
-
-/* Removes SVG styling that would hide the time label */
 .base-timer__circle {
   fill: none;
   stroke: none;
 }
-
-/* The SVG path that displays the timer's progress */
 .base-timer__path-elapsed {
   stroke-width: 10px;
   stroke: grey;
 }
-
 .base-timer__label {
   position: absolute;
-  /* Size should match the parent container */
   width: 100%;
   height: 100%;
-  /* Keep the label aligned to the top */
   top: 0;
-  /* Create a flexible box that centers content vertically and horizontally */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Sort of an arbitrary number; adjust to your liking */
   font-size: 8px;
   flex-direction: column;
 }
@@ -455,7 +378,6 @@ span {
 .base-timer__label #time-field {
   font-size: 40px;
 }
-
 .base-timer__path-remaining {
   stroke-width: 10px;
   transform: rotate(90deg);
@@ -463,30 +385,12 @@ span {
   transition: 1s linear all;
   stroke: currentColor;
 }
-
 .base-timer__svg {
-  /* Flips the svg and makes the animation to move left-to-right */
   transform: scaleX(-1);
 }
-
 .base-timer__path-remaining.blue {
   color: #00FFFF;
 }
-
 .base-timer__path-remaining.pink {
   color: #d20094;
-}
-
-.inner .next-box {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  padding: 0 0%;
-  margin-top: 150px;
-  margin: 5vh 5.5vw;
-
-}
-
-.inner div.qtn-footer {
-  margin-top: 10%;
 }

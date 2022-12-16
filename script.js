@@ -307,21 +307,20 @@ function renderFeedback() {
     inner.appendChild(h1);
 
     let p = document.createElement("p");
+    p.classList.add("fs-larger");
     p.innerText = "From 0 to 10, how likely are you to recommend EPICODE to a friend or a colleague?";
     inner.appendChild(p);
-
 
     let stars = document.createElement("div")
     stars.id = "stars";
     inner.appendChild(stars);
     renderStars();
 
-
-
     let commentBoxContainer = document.createElement("div");
     commentBoxContainer.classList.add("comment-box"); 
 
     let p1 = document.createElement("p");
+    p1.classList.add("fs-larger");
     p1.innerText = "Leave us an open feedback about your experience so far";
     inner.appendChild(p1);
 
